@@ -1,0 +1,123 @@
+.footer_layout{
+	width: 100%;
+	margin-top: 40px;
+}
+
+.footer{
+	width: 960px;
+	height: 180px;
+	margin-left: auto;
+	margin-right: auto;	
+	margin-top: 40px;
+}
+
+.footer_content1{
+	float: left;
+    margin-top: 40px;
+    width: 300px;
+}
+.footer_logo{
+	margin-right: 10px;
+}
+
+.footer_text{
+	font-family: Arial;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.footer_add{
+	font-size: 12px;
+	margin-top: 12px;
+	color:#575757;			
+}
+
+.footer_phone{
+	color: #00aFF0;
+	float: left;
+	font-size: 12px;
+}
+.footer_text_CSKH{
+	font-weight: bold;
+	font-size: 20px;	
+}
+.footer_content2{
+	 float: left;
+    margin-top: 40px;
+    padding-left: 35px;
+    width: 290px;
+}
+.footer_lien_ket{
+	font-size: 12px;
+	font-weight: bold;
+	margin-top: 12px;	
+	margin-bottom: 4px;
+	color: #575757;
+}
+
+.footer_content3{
+	margin-top: 40px;
+	margin-left:40px;
+	float: left;
+	width: 280px;
+}
+.footer_logo_social{
+	float: left;
+}
+
+.footer_copyright{
+	font-family: Arial;
+	font-size: 12px;	
+	margin-top: 20px;
+	color:#575757;
+}
+
+.footer_menu{
+	font-family: Arial;
+	font-size: 12px;
+	font-weight: bold;	
+	margin-top: 12px;
+	color:#575757
+}
+
+.footer_txt_sdt{
+	float: left;
+    height: 30px;
+    margin-right: 10px;
+    width: 150px;
+    height: 35px;
+    padding-left: 10px;
+}
+
+.footer_btn_gui{
+	height: 30px;
+	background-color: #B0006E;
+    border: 2px solid #B0006E;
+    border-radius: 4px;
+    color: #FFFFFF;
+    font-weight: bold;
+    height:35px;
+    padding: 0px 20px;
+}
+
+.footer_btn_gui:hover{
+	background-color: #8d0058;
+    border: 2px solid #8d0058;
+}
+.footer_facebook{
+	margin-right: 10px;
+	float: left;
+}
+.footer_tweet{
+	margin-right: 10px;
+	float: left;
+}
+.footer_youtube{
+	margin-right: 10px;
+	float: left;
+}
+
+.footer_social{
+	width: 100%;
+	clear: both;
+}

@@ -1,0 +1,1029 @@
+/*
+	[7/6/2016 9:53:56 AM] Ho ly: màu background: f1f1f1
+	[7/6/2016 9:54:17 AM] Ho ly: màu text: 454445
+	[7/6/2016 9:54:33 AM] Ho ly: màu Số: #b0006d
+*/
+
+.dropbtn {
+    background-color: transparent;    
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+	z-index: 99;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;	
+	z-index: 99;
+}
+
+.dropdown-content {	
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+	border: 0 none;
+	color: #b0006d;
+    min-width: 280px;
+    box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.2);
+	-webkit-box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.2);
+	left: 0px;
+	top:50px;
+	z-index: 9999;
+}
+
+.dropdown-content a {	
+	text-align: left;    
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;	
+	z-index: 99;
+}
+
+.dropdown-content a:hover {
+	background-color: #f1f1f1;
+	color: #b0006d;
+	z-index: 99;
+	border-radius: 0 !important;
+	
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;	
+	z-index: 99;
+}
+
+.dropdown:hover .dropbtn {
+	z-index: 99;
+	color: #b0006d;
+    background-color: #ffffff;
+	font-weight:bold;
+}
+
+p, a, li {
+	white-space: normal;	
+}
+
+p {
+	color: #454445;
+}
+.navbar-inverse {
+	border-color: #ffffff;
+}
+
+.tableBodyContent{
+	background-color: #f1f1f1;
+	padding-top: 5%;	
+	padding-left: 6%;
+	border-collapse: separate; 
+	border-spacing: 10px; 
+	width: 75%; 
+	margin-left: 0;
+}
+
+.tableBodyContentMobile{
+	background-color: #f1f1f1;
+	border-collapse: separate; 
+	border-spacing: 10px;
+	width: 90%;	
+}
+
+.popover-content > a:hover{
+	text-decoration: none;
+    color: #b0006d;			
+}
+
+.popover-content{
+	line-height: 1.2;
+}
+.mobile_site{	
+	display: none;
+}
+
+.navbar-header {
+	background-color: transparent;
+}
+
+#navbar {
+	background-color: transparent;
+}
+
+.pc_site {
+	display: none;
+}
+
+.bodyFontColorPink {
+    color: #b0006d;
+}
+
+a {
+    text-decoration: none;
+    /*color: #58595b; Làm cho hyperlink có màu xám[58595b] thay vì là blue bình thường, nên xóa bỏ sẽ làm cho link thành màu blue*/
+}
+
+a:hover {
+	text-decoration: none;
+	color: #b0006d;
+}
+
+a:active {
+	text-decoration: none;
+	color: #b0006d;
+}
+
+.vertical-align {
+    display: flex;
+    flex-direction: row;
+    display: -webkit-flex;
+}
+
+.bodyContent {
+    background-color: #ffffff;
+    /*border-radius: 25px;*/
+	text-align: justify;
+	position: relative;
+	z-index: 0;
+}
+
+.vertical-align > [class^="col-"],
+.vertical-align > [class*=" col-"] {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-align-items: center; /* Optional, to align inner items 
+	horizontally inside the column */
+}
+
+/**
+	*  Do NOT include this part into your stylesheet.
+	*  "flex: 1" or "flex-grow: 1" is added to make the inner div
+	*  - Which is also a flex-item - take up all the horizontal space
+	*  available space inside the flex container (.col-* elements)
+*/
+.vertical-align > [class^="col-"] > div,
+.vertical-align > [class*=" col-"] > div {
+	/* flex: 1; */
+	flex-grow: 1;
+	-webkit-flex-grow: 1;
+}
+
+font {
+    line-height: 1.4;
+}
+
+@media all and (min-width: 0px) and (max-width: 422px) {
+	.mobile_site{
+		display: block;
+	}
+    .pc_site {
+        display: none;
+	}
+	
+    .font-header {
+        font-size: 3vmax;
+	}
+	
+    font {
+        font-size: 4vmin;
+	}
+	
+    body {
+        font-size: 3vmin;
+	}
+	
+    .font-header1 {
+        font-size: 2.5vmax;
+	}
+	
+    .fontmenu {
+        font-size: 4vmin;
+	}
+	
+	
+	
+    .hd_Title_slideup {
+        font-size: 4vmin;
+	}
+}
+
+@media all and (min-width: 422px) and (max-width: 722px) {
+	
+    .mobile_site{
+		display: block;
+	}
+    
+	.pc_site {
+        display: none;
+	}
+	
+    .font-header {
+        font-size: 3.5vmax;
+	}
+	
+    font {
+        font-size: 4vmin;
+	}
+	
+    body {
+        font-size: 3.5vmin;
+	}
+	
+    .font-header1 {
+        font-size: 3vmax;
+	}
+	
+    .fontmenu {
+        font-size: 4.5vmin;
+	}
+	
+    .hd_Title_slideup {
+        font-size: 5vmin;
+	}
+}
+
+@media all and (min-width: 722px) and (max-width: 1024px) {
+	
+    .mobile_site{
+		display: block;
+	}
+	
+    .pc_site {
+        display: none;
+	}
+	
+    .font-header {
+        font-size: 4vmax;
+	}
+	
+    font {
+        font-size: 5vmin;
+	}
+	
+    body {
+        font-size: 4vmin;
+	}
+	
+    .font-header1 {
+        font-size: 3.5vmax;
+	}
+	
+    .fontmenu {
+        font-size: 5vmin;
+	}
+	
+    .hd_Title_slideup {
+        font-size: 6vmin;
+	}
+}
+
+@media all and (min-width: 0px) and (max-width: 1024px) {
+    
+    .mobile_site{
+		display: block;
+	}
+	
+    .pc_site {
+        display: none;
+	}
+	
+    * {
+        margin: 0;
+	}
+	
+    html {
+        position: relative;
+        min-height: 100%;
+	}
+	
+    body {
+        /* Margin bottom by footer height: Khoảng trắng phía dưới đáy của mobile_site */
+        margin-bottom: 0px;
+	}
+	#AddBottomBorder{
+		top: 0;
+		left:0;
+		right: 0; 
+		-webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
+        -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
+        transition: background .5s ease-in-out,padding .5s ease-in-out;
+	}
+    .footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        /* Set the fixed height of the footer here */
+        /*height: 60px;*/
+        background: #ffffff;
+        padding: 5px 0;
+	}
+	
+    .whiteColorFont {
+        color: white;
+	}
+	
+    .backgroundHomePageMobile {
+        background-image: url(https://momo.vn/welcome/image/thisOnly/Homepage/Homepage_BG_Mobile.png); /*besq_BG_MB*/
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+	}
+	
+    h1, h2, h3 {
+        margin: 0px;
+        padding: 1px;
+	}
+	
+    .tagPremoveMarPad {
+        margin: 0;
+        padding: 0;
+	}
+	
+    .pc_site {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        display: none;
+	}
+	
+	/*Mobile*/
+    .content2 {
+        margin: 0 9.5%;
+	}
+	
+    .container {
+        width: 100% !important;
+        padding: 0px !important;
+	}
+	
+	/*Mobile*/
+    .header {
+        padding: 10px 0;
+        /*background: #af006e;*/
+	}
+	
+    #toggle {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url(maincss.css) repeat scroll transparent\9; /* ie fallback png background image */
+        z-index: 1020;
+        color: white;
+        display: none;
+	}
+	
+    .menuMobile {
+        background-color: #b0006d;
+	}
+	
+    #myNavmenu {
+        background-color: #ffffff;
+        color: #b0006d;
+	}
+	
+	#myNavmenu a {
+		color: #b0006d;
+		font-weight: bold;
+	}
+	
+	#myNavmenu ul {
+		color: #b0006d;
+		font-weight: bold;
+	}
+	
+	#myNavmenu li {
+		color: #b0006d;
+		font-weight: bold;
+		list-style-position: inside;
+	}
+	
+    .menuContent1 {
+        background-color: #af006e;
+        font-weight: bold;
+	}
+	
+    .menuContent {
+        border-bottom: 1px white;
+        font-weight: bold;
+	}
+	
+    .hdcontent {
+	}
+	
+    .vertical-align {
+        display: flex;
+        flex-direction: row;
+        display: -webkit-flex;
+	}
+	
+    .bodyContent {
+        background-color: #ffffff;
+        /*border-radius: 25px;*/
+		position: relative;
+		z-index: 0;
+		text-align: justify;
+	}
+	
+    .vertical-align > [class^="col-"],
+    .vertical-align > [class*=" col-"] {
+        display: flex;
+        display: -webkit-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-align-items: center; /* Optional, to align inner items 
+		horizontally inside the column */
+	}
+	
+	/**
+		*  Do NOT include this part into your stylesheet.
+		*  "flex: 1" or "flex-grow: 1" is added to make the inner div
+		*  - Which is also a flex-item - take up all the horizontal space
+		*  available space inside the flex container (.col-* elements)
+	*/
+	.vertical-align > [class^="col-"] > div,
+	.vertical-align > [class*=" col-"] > div {
+		/* flex: 1; */
+		flex-grow: 1;
+		-webkit-flex-grow: 1;
+	}
+	
+    .content {
+        margin-top: 108px;
+	}
+	
+    .middleforcol {
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        vertical-align: middle;
+        top: 50%;
+	}
+
+	.menu{
+		float:left;
+		color: #454445;
+		width: 33%;
+		text-align:center;
+		height: 30px;
+		margin: 0 auto;
+		padding: 0;
+		vertical-align: middle;
+		text-decoration: none;
+		word-break:break-word;
+		word-wrap: break-word;
+		text-decoration: none !important;
+	}
+	.menu h4{
+		font-size: 4.5vmin !important;
+	}
+	.bgcover1{
+		padding:0; 
+		margin:0 -25px;
+		/*height: 40vmin; */
+		height: auto;
+		/*background: url(../img/Banner_BG.png) top right no-repeat; */
+		background-size: cover;
+	}
+	.bgcover2{
+		padding:0; 
+		margin:0 -25px;
+		/*height: 20vmin; */
+		height: auto;
+		/*background: url(../img/CachNhanThuong_BG.png) top right no-repeat; */
+		background-size: cover;
+	}
+	.bgcover3{
+		padding:0; 
+		margin:0 -25px;
+		height: auto; 
+		min-width: 100px;
+		/*background: url(../img/banner/Mobile/Banner_Gioi_thieu.jpg) top right no-repeat; */
+		background-size: cover;
+	}
+	.bgtext{
+		margin: 0 0 0 5%;
+		padding: 0;
+		line-height:20vmin;
+		color:#fff;
+		font-family: "Roboto-Medium";
+		font-size: 5vmin;
+		font-weight: 500;
+	}
+	.noidung{
+		display:none;
+	}
+	section.doan{
+		margin: 0;
+		padding:0 0 1vmin 0;		
+		display: block;
+		border-bottom: 1px solid rgba(215, 215, 215, 0.5);
+		float:left;
+		clear:both;
+		width:100%;
+	}
+	div.tieude{
+		font-size: 18px;
+		color: #b0006d !important;
+		cursor: pointer;
+		margin:3vmin 0 0 0;
+		padding:0;
+		line-height:auto;
+		clear:both;
+		min-height: 30px;
+		width: 100%;
+		display: block;
+		float:left;
+	}
+	div.tieude h4{
+		float: left;
+		width: 90%;
+		font-size: 17px;
+		color: #b0006d !important;
+		cursor: pointer;
+		margin:0;
+		padding:0 0 3vmin 0;
+		line-height:auto;
+	}
+	div.noidung {
+		float:left;
+		text-align:left;
+		clear: both;
+	}
+	div.noidung p{
+		font-size:16px;
+		color:#707070;
+		margin: 5vmin 0;
+		padding:0;
+	}
+	hr{
+		border-bottom: 1px solid rgba(215,215,215,0.5) !important	;
+		border-top: 0 none !important;
+		border-left: 0 none !important;
+		border-right: 0 none !important;
+		margin: 10px 0 10px 0 !important;
+	}
+	
+	.mobile_site p{
+		font-size: 18px;
+	}
+	.mobile_site h4{
+		font-size: 22px;
+	}
+}
+@media all and (min-width: 0px) and (max-width: 530px) {
+	div.mobile_site{
+		padding-top: 24vmin;
+	}
+}
+@media all and (min-width: 531px) and (max-width: 1024px) {
+	div.mobile_site{
+		padding-top: 28vmin;
+	}
+}
+
+
+@media all and (min-width: 1024px) and (max-width: 2564px) {
+	
+    .mobile_site {
+        display: none;
+	}
+	
+    .pc_site {
+        display: block;
+        margin: 0;
+        width: 100%;
+        padding: 0;
+	}
+	/*
+		body {
+        background: url("../image/Background.png");
+		}
+	*/
+    .removeMarPadCol {
+        padding-right: 6px;
+        margin-right: 6px;
+        margin-left: 4px;
+        padding-left: 0px;
+	}
+	
+    .resizeWidthButton {
+        width: 11.067%;
+	}
+	
+    .header {
+        margin: 0 auto;
+        background-color: transparent;		
+        width: 70%;
+        height: 100px;
+        left: 0px;
+        padding: 0 3%;                
+        vertical-align: middle;
+	}
+	
+    .imageLogoContent {
+        text-align: right;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        vertical-align: middle;
+        top: 50%;
+	}
+	
+    .contentLinkHeader {
+        text-align: center;
+		font-weight: normal;
+        color: #58595b;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        vertical-align: middle;
+        top: 50%;
+	}
+	
+	.contentLinkHeader span {
+		font-size: 16pt;
+	}
+	
+    .hovermenu {
+        color: #b0006d;
+	}
+	
+    .bodyContent {
+        background-color: #ffffff;
+        /*border-radius: 25px;*/
+		text-align: justify;
+		position: relative;
+		z-index: 0;
+	}
+	
+	
+	
+    .content1 {
+        height: 39px;
+        left: 0;
+        vertical-align: middle;
+        background-color: #b0006d;
+        width: 800px;
+	}
+	
+	/*PC */
+    .content2 {
+        margin: 0 9.5%;
+		font-size: 110%;		
+	}
+	
+	
+    .facebook {
+        color: white;
+        font-weight: bold;
+        font-size: 10pt;
+	}
+	
+    .middleforcol {
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        vertical-align: middle;
+        top: 50%;
+	}
+	
+	
+    .footer {
+        height: 140px;
+        margin: 0px;        
+        background-color: #ffffff;
+		text-align: center;		
+        color: #58595b;        
+        vertical-align: middle;
+        left: 0;		
+		width: 61.5%;
+	}
+	
+	
+	
+    #imageLogo {
+        vertical-align: middle;
+        height: 60px;
+	}
+	
+	
+    .noneLine {
+        text-decoration: none;
+        margin: 0 12px 0 0;
+        font-size: 11.5pt;
+        color: #58595b;
+        width: 100%;
+	}
+	
+    .noneLine1 {
+        text-decoration: none;
+        margin: 0 12px 0 0;
+        font-size: 11.5pt;
+        color: #58595b;
+        width: 100%;
+	}
+	
+    .fontSizeFooter {
+        font-size: 10pt;
+	}
+	
+    .contentLinkHeader a:hover {
+        text-decoration: none;
+        color: #b0006d;
+        /*background-color: #b0006d;*/
+        border-radius: 0px;
+		font-weight:bold;
+	}
+	
+    .contentLinkHeader a:link {
+        text-decoration: none;
+        color: #58595b;
+	}
+	
+    /* visited link */
+    .contentLinkHeader a:visited {
+        text-decoration: none;
+        /*color:white;
+		background-color: #b0006d;*/
+        border-radius: 0px;
+	}
+	
+    .contentLinkHeader a:active {
+        text-decoration: none;
+        color: #b0006d;
+        /*background-color: #b0006d;*/
+        border-radius: 0px;
+	}
+	
+    .loginButton {
+        cursor: pointer;
+        cursor: hand;
+        color: white;
+        background-color: #b0006e;
+        font-weight: bold;
+        text-align: center;
+        font-size: 13pt;
+	}
+	
+    .hdcontent {
+        background: #af006e;
+        color: white;
+        margin: 10px 0;
+	}
+	
+	.hdcontent p {
+		margin-right: 50px;
+	}
+	
+    .backgroundHomePage {
+        background-image: url(https://momo.vn/welcome/image/thisOnly/Homepage/Homepage_BG_PC.png); /*besq_BG_PC*/
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+	}
+	
+    .borderRightMenu {
+        /*border-right: 2px solid #58595b;*/
+	}
+	
+	.menu{
+		color: #b0006d;
+		text-align:center;
+		height: 1.3;
+		margin: 0 auto;
+		padding: 0;
+		vertical-align: middle;
+		text-decoration: none;
+		word-break:break-word;
+		word-wrap: break-word;
+		text-decoration: none !important;
+	}
+	.menu h4{
+		font-size: 4.5vmin !important;
+	}
+	
+	section.doan{
+		margin: 0;
+		padding:0 0 1vmin 0;		
+		display: block;
+		border-bottom: 1px solid rgba(215, 215, 215, 0.5);
+		float:left;
+		clear:both;
+		width:100%;
+	}
+	div.tieude{
+		font-size: 18px;
+		color: #b0006d !important;
+		cursor: pointer;
+		margin:3vmin 0 0 0;
+		padding:0;
+		line-height:auto;
+		clear:both;
+		min-height: 30px;
+		width: 100%;
+		display: block;
+		float:left;
+	}
+	div.tieude h4{
+		float: left;
+		width: 90%;
+		font-size: 17px;
+		color: #b0006d !important;
+		cursor: pointer;
+		margin:0;
+		padding:0 0 3vmin 0;
+		line-height:auto;
+	}
+	div.noidung {
+		float:left;
+		text-align:left;
+		clear: both;
+		display: none;
+	}
+	div.noidung p{
+		font-size:16px;
+		color:#707070;
+		margin: 5vmin 0;
+		padding:0;
+	}
+	hr{
+		border-bottom: 1px solid rgba(215,215,215,0.5) !important	;
+		border-top: 0 none !important;
+		border-left: 0 none !important;
+		border-right: 0 none !important;
+		margin: 10px 0 10px 0 !important;
+	}
+	.bgcover1{
+		padding:0; 
+		margin:0 -25px;
+		height: 40vmin; 
+		/*background: url(../img/Banner_BG.png) top right no-repeat; */
+		background-size: cover;
+	}
+	.bgcover2{
+		padding:0; 
+		margin:0 -25px;
+		height: auto; 
+		/*background: url(../img/CachNhanThuong_BG.png) top right no-repeat; */
+		background-size: cover;
+	}
+	.bgcover3{
+		padding:0; 
+		margin:0 -25px;
+		height: 33vmin; 
+		min-width: 100px;
+		/*background: url(../img/banner/Web/Banner_Gioi_thieu_Web.jpg) top right no-repeat; */
+		background-size: cover;
+	}
+	.bgtext{
+		margin: 0 0 0 5%;
+		padding: 0;
+		line-height:20vmin;
+		color:#fff;
+		font-family: "Roboto-Medium";
+		font-size: 5vmin;
+		font-weight: 500;
+		text-align: left;
+	}
+
+
+}
+
+
+@media (max-width: 1024px) {
+	.navbar-header {
+		float: none;
+	}
+	.navbar-left,.navbar-right {
+		float: none !important;
+	}
+	.navbar-toggle {
+		display: block;
+	}
+	.navbar-collapse {
+		border-top: 1px solid transparent;
+		/*box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);*/
+	}
+	.navbar-fixed-top {
+		top: 0;
+		border-width: 0 0 1px;
+	}
+	.navbar-collapse.collapse {
+		display: none!important;
+	}
+	.navbar-nav {
+		float: none!important;
+		margin-top: 7.5px;
+	}
+	.navbar-nav>li {
+		float: none;
+	}
+	.navbar-nav>li>a {
+		padding-top: 5px;
+		padding-bottom: 5px;
+	}
+	.collapse.in{
+		display:block !important;
+	}
+}
+
+@media all and (min-width: 0px) and (max-width: 360px) {
+	div.mobile_site{
+		padding-top: 80px !important;
+	}
+	.menubar_out{height: 50px;}
+	.menubar_in{height: 60px;vertical-align:middle;}
+	.menubar_in a.menu {height:55px;}
+}
+@media all and (min-width: 361px) and (max-width: 420px) {
+	div.mobile_site{
+		padding-top: 95px !important;
+	}
+	.menubar_out{height: 70px;}
+	.menubar_in{height: 80px;vertical-align:middle;}
+	.menubar_in a.menu {height:70px;}
+	.menubar_in a.menu h4 {height:70px;line-height:30px !important;}		
+}
+@media all and (min-width: 421px) and (max-width: 500px) {
+	div.mobile_site{
+		padding-top: 115px !important;
+	}
+	.menubar_out{height: 80px;}
+	.menubar_in{height: 90px;vertical-align:middle;}
+	.menubar_in a.menu {height:80px;}
+	.menubar_in a.menu h4 {height:80px;line-height:30px !important;}		
+}
+@media all and (min-width: 501px) and (max-width: 560px) {
+	div.mobile_site{
+		padding-top: 125px !important;
+	}
+	.menubar_out{height: 90px;}
+	.menubar_in{height: 100px;vertical-align:middle;}
+	.menubar_in a.menu {height:90px;}
+	.menubar_in a.menu h4 {height:80px;}	
+}
+@media all and (min-width: 561px) and (max-width: 640px) {
+	div.mobile_site{
+		padding-top: 130px !important;
+	}
+	.menubar_out{height: 90px;}
+	.menubar_in{height: 100px;vertical-align:middle;}
+	.menubar_in a.menu {height:90px;}
+	.menubar_in a.menu h4 {height:80px;}	
+}
+@media all and (min-width: 641px) and (max-width: 768px) {
+	div.mobile_site{
+		padding-top: 140px !important;
+	}
+	.menubar_out{height: 90px;}
+	.menubar_in{height: 100px;vertical-align:middle;}
+	.menubar_in a.menu {height:90px;}
+	.menubar_in a.menu h4 {height:80px;}	
+}
+@media all and (min-width: 769px) and (max-width: 880px) {
+	div.mobile_site{
+		padding-top: 140px !important;
+	}
+	.menubar_out{height: 100px;}
+	.menubar_in{height: 110px;vertical-align:middle;}
+	.menubar_in a.menu {height:100px;}
+	.menubar_in a.menu h4 {height:90px;}	
+}
+@media all and (min-width: 881px) and (max-width: 920px) {
+	div.mobile_site{
+		padding-top: 150px !important;
+	}
+	.menubar_out{height: 110px;}
+	.menubar_in{height: 120px;vertical-align:middle;}
+	.menubar_in a.menu {height:110px;}
+	.menubar_in a.menu h4 {height:100px;}	
+}
+@media all and (min-width: 921px) and (max-width: 1024px) {
+	div.mobile_site{
+		padding-top: 160px !important;
+	}
+	.menubar_out{height: 120px;}
+	.menubar_in{height: 130px;vertical-align:middle;}
+	.menubar_in a.menu {height:120px;}
+	.menubar_in a.menu h4 {height:110px;}	
+}
+@media all and (min-width: 1024px) and (max-width: 2564px) {
+	.bgcover1, .bgcover2{width:100%;height:auto;}
+	.bgcover1 img, .bgcover2 img{width:100%;height:auto;}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

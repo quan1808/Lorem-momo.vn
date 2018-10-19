@@ -1,0 +1,597 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	
+<link rel="shortcut icon" href="assets/Images/momo.ico">
+<title>Tra cứu thông tin giao dịch</title>
+<link href="/inbienlai/assets/Css/bootstrap.min.css;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E" rel="stylesheet" />
+<link href="/inbienlai/bootstrap/css/bootstrap.css;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E" rel="stylesheet" />
+
+<script src="/inbienlai/assets/Js/jquery-1.11.2.min.js;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E"></script>
+<script type="text/javascript" src="/inbienlai/assets/Js/jquery-ui.min.js;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E"></script>
+
+
+<script src="/inbienlai/assets/Js/bootstrap.min.js;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E"></script>
+<script src="/inbienlai/assets/Js/script.js;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E"></script>
+
+<link href="/inbienlai/assets/datepicker/css/datepicker.css;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E" rel="stylesheet" />
+<script src="/inbienlai/assets/datepicker/js/bootstrap-datepicker.js;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E"></script>
+
+
+<link href="/inbienlai/assets/Css/style.css;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E" rel="stylesheet" />
+<link href="/inbienlai/assets/Css/bootstrap-select.min.css;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E" rel="stylesheet" />
+<script src="/inbienlai/assets/Js/bootstrap-select.min.js;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E"></script>
+
+	<link href="/inbienlai/assets/Css/datatables_bootstrap.css;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E" rel="stylesheet" />
+	<link href="/inbienlai/assets/Css/datatables.css;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E" rel="stylesheet" />
+	<script type="text/javascript" src="/inbienlai/assets/datatables/jquery.dataTables.min.js;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E"></script>
+	<script type="text/javascript" src="/inbienlai/assets/datatables/jquery.dataTables.min.js;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E"></script> 
+	<script type="text/javascript" src="/inbienlai/assets/datatables/colvis/ColVis.min.js;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E"></script> 
+	<script type="text/javascript" src="/inbienlai/assets/datatables/columnfilter/jquery.dataTables.columnFilter.js;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E"></script> 
+	<script type="text/javascript" src="/inbienlai/assets/datatables/DT_bootstrap.js;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E"></script>	
+	<link href="/inbienlai/assets/Css/select2.css;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="/inbienlai/assets/plugins/select2/select2.min.js;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E"></script>
+	<script type="text/javascript"
+	src="/inbienlai/assets/Js/utils.js;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E"></script>
+	<link href="/inbienlai/assets/Css/spinner.css;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E" rel="stylesheet" />
+	<link href="/inbienlai/assets/Css/myCheckboxStyle.css;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E" rel="stylesheet" />
+</head>
+<body class="cms-list-new cms-list-new-detail detail-page">
+	<div class="wrapper">
+		<!-- Header -->
+		
+		
+			
+
+
+<!--HEADER-->
+<div class="header-container row" id="header-container">
+	<header class="container">
+		<div class="logo-wrap box">
+			<div>
+				<a href="http://news.momo.vn/" class="logo"></a>
+			</div>
+		</div>
+		<div class="hotline-wrap">
+			<div>
+				<a class="hotline" href="#"></a>
+			</div>
+		</div>
+		<div class="share-link">
+			<div>
+				<a class="fb-icon icon-sprite"
+					href="https://www.facebook.com/vimomo" target="_blank"></a>
+			</div>
+			<div>
+				<a class="ytb-icon icon-sprite"
+					href="https://www.youtube.com/channel/UCKHHW-qL2JoZqcSNm1jPlqw"
+					target="_blank"></a>
+			</div>
+		</div>
+	</header>
+	<nav class="nav-mobile row">
+		<a href="#" class="mobile-menu col-xs-2"> <img
+			src="/inbienlai/assets/Images/nav-mobile.png;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E" />
+		</a>
+		<a href="/" class="logo-mobile col-xs-4"> <img
+			src="/inbienlai/assets/Images/logo.png;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E" />
+		</a>
+		<div class="account-mobile col-xs-4">
+			<a href="#" class="acc-mb-icon"><img
+				src="/inbienlai/assets/Images/icon-account-mb.png;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E" /></a>
+		</div>
+	</nav>
+	<div id="mega-menu" style="display: none;">
+		<h1 class="title">
+			momo.vn<span class="glyphicon glyphicon-remove-sign"></span>
+		</h1>
+		<ul>
+			<li class="momo-service parent"><a href="#"> <span> <img
+						src="/inbienlai/assets/Images/i-momo-menu.png;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E" alt="momo" />
+				</span> Dịch vụ tạicửa hàng MoMo <span
+					class="glyphicon glyphicon-chevron-down glyphicon-last"> </span>
+			</a>
+				<ul>
+					<li><a href="#"><span
+							class="glyphicon glyphicon-chevron-right"></span>Giới thiệu chung</a></li>
+					<li><a
+						href="http://news.momo.vn/dich-vu-tai-diem-giao-dich/gioi-thieu-cac-dich-vu/"><span
+							class="glyphicon glyphicon-chevron-right"></span>Giới thiệu các
+							dịch vụ</a></li>
+					<li><a
+						href="http://news.momo.vn/dich-vu-tai-diem-giao-dich/bieu-phi/"><span
+							class="glyphicon glyphicon-chevron-right"></span>Biểu phí</a></li>
+					<li><a
+						href="http://news.momo.vn/dich-vu-tai-diem-giao-dich/dinh-danh/"><span
+							class="glyphicon glyphicon-chevron-right"></span>Định danh</a></li>
+					<li><a href="https://momo.vn/scoretransaction/index1"><span
+							class="glyphicon glyphicon-chevron-right"></span>Tìm điểm giao
+							dịch</a></li>
+
+				</ul></li>
+			<li class="momo-app parent"><a class="title" href="#"><span><img
+						src="/inbienlai/assets/Images/i-app-menu.png;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E" alt="momo" /></span>Ứng dụng MoMo<span
+					class="glyphicon glyphicon-chevron-down glyphicon-last"></span></a>
+				<ul>
+					<li><a
+						href="http://news.momo.vn/ung-dung-momo/gioi-thieu-cac-ung-dung-momo/"><span
+							class="glyphicon glyphicon-chevron-right"></span>Giới thiệu Ứng
+							dụng MoMo</a></li>
+					<li><a
+						href="http://news.momo.vn/ung-dung-momo/dich-vu-tren-ung-dung-momo/"><span
+							class="glyphicon glyphicon-chevron-right"></span>Dịch vụ trên Ứng
+							dụng MoMo</a></li>
+					<li><a
+						href="http://news.momo.vn/ung-dung-momo/cac-huong-dan-can-thiet/"><span
+							class="glyphicon glyphicon-chevron-right"></span>Các hướng dẫn
+							cần thiết</a></li>
+					<li><a
+						href="http://news.momo.vn/ung-dung-momo/cac-ngan-hang-ket-noi/"><span
+							class="glyphicon glyphicon-chevron-right"></span>Các ngân hàng
+							kết nối</a></li>
+					<li><a href="http://news.momo.vn/ung-dung-momo/hoi-dap/"><span
+							class="glyphicon glyphicon-chevron-right"></span>Hỏi đáp</a></li>
+					<li><a href="http://news.momo.vn/ung-dung-momo/bieu-phi/"><span
+							class="glyphicon glyphicon-chevron-right"></span>Biểu phí</a></li>
+				</ul></li>
+			<li class="momo-customer parent"><a href="#"><span><img
+						src="/inbienlai/assets/Images/i-customer-menu.png;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E" alt="momo" /></span>Khách hàng
+					doanh nghiệp<span
+					class="glyphicon glyphicon-chevron-down glyphicon-last"></span></a>
+				<ul>
+					<li><a
+						href="http://news.momo.vn/khach-hang-doanh-nghiep/vi-sao-chon-chung-toi/"><span
+							class="glyphicon glyphicon-chevron-right"></span>Vì sao chọn
+							chúng tôi</a></li>
+					<li><a
+						href="http://news.momo.vn/khach-hang-doanh-nghiep/tien-ich/"><span
+							class="glyphicon glyphicon-chevron-right"></span>Tiện ích</a></li>
+					<li><a
+						href="http://news.momo.vn/khach-hang-doanh-nghiep/dich-vu-cung-cap/"><span
+							class="glyphicon glyphicon-chevron-right"></span>Dịch vụ cung cấp</a></li>
+					<li><a
+						href="http://news.momo.vn/khach-hang-doanh-nghiep/doi-tac/"><span
+							class="glyphicon glyphicon-chevron-right"></span>Đối tác</a></li>
+					<li><a
+						href="http://news.momo.vn/khach-hang-doanh-nghiep/lien-he-hop-tac/"><span
+							class="glyphicon glyphicon-chevron-right"></span>Liên hệ hợp tác</a></li>
+				</ul></li>
+
+			<li class="momo-intro parent"><a href="#">Giới thiệu<span
+					class="glyphicon glyphicon-chevron-down glyphicon-last"></span></a>
+				<ul>
+					<li><a href="/gioi-thieu/gioi-thieu-chung/"><span
+							class="glyphicon glyphicon-chevron-right"></span>Giới thiệu chung</a></li>
+					<li><a href="/gioi-thieu/su-kien-thanh-tuu/"><span
+							class="glyphicon glyphicon-chevron-right"></span>Sự kiện thành
+							tựu</a></li>
+					<li><a href="/gioi-thieu/doi-tac/"><span
+							class="glyphicon glyphicon-chevron-right"></span>Đối tác</a></li>
+				</ul></li>
+			<li class="momo-news parent"><a href="#">Tin tức<span
+					class="glyphicon glyphicon-chevron-down glyphicon-last"></span></a>
+				<ul>
+					<li><a href="/tin-tuc/tin-tuc-su-kien/"><span
+							class="glyphicon glyphicon-chevron-right"></span>Tin tức - Sự
+							kiện</a></li>
+					<li><a href="/tin-tuc/khuyen-mai/"><span
+							class="glyphicon glyphicon-chevron-right"></span>Khuyến mãi</a></li>
+					<li><a href="/tin-tuc/thong-cao-bao-chi/"><span
+							class="glyphicon glyphicon-chevron-right"></span>Thông cáo báo
+							chí</a></li>
+					<li><a href="/tin-tuc/hinh-anh-video/"><span
+							class="glyphicon glyphicon-chevron-right"></span>Hình ảnh - Video</a></li>
+				</ul></li>
+			<li class="momo-career parent"><a href="#">Tuyển dụng<span
+					class="glyphicon glyphicon-chevron-down glyphicon-last"></span></a>
+				<ul>
+					<li><a href="/tuyen-dung/viec-lam-hot/"><span
+							class="glyphicon glyphicon-chevron-right"></span>Việc làm "hot"</a></li>
+					<li><a href="/tuyen-dung/tuyen-dung-theo-thang/"><span
+							class="glyphicon glyphicon-chevron-right"></span>Tuyển dụng theo
+							tháng</a></li>
+					<li><a href="/tuyen-dung/lien-he-tuyen-dung/"><span
+							class="glyphicon glyphicon-chevron-right"></span>Liên hệ tuyển
+							dụng</a></li>
+				</ul></li>
+			<li class="momo-contact parent"><a href="/lien-he-cong-ty/">Liên
+					hệ</a></li>
+		</ul>
+	</div>
+	<div class="login-wrap" style="display: none;">
+		<div class="container">
+			<a class="transaction" href="https://payment.momo.vn/login.jsp"
+				target="_blank">Điểm giao dịch</a>
+		</div>
+	</div>
+
+</div>
+<!--END HEADER-->
+		
+
+		<div id="main">
+			<!-- Top menu -->
+			
+			
+				
+
+
+
+
+<!--TOP MENU-->
+<div class="bottom-menu-wrap">
+	<div class="bottom-menu container">
+		<ul>
+			<li class="item first" parent="service-place">
+				<div class="active-hover" style="display: none;"></div> <a href="#">
+					<span class="icon i-momo"></span> <span class="text">Dịch vụ
+						tại<br /> Điểm giao dịch
+				</span>
+			</a>
+			</li>
+			<li class="item second" parent="application">
+				<div class="active-hover" style="display: none;"></div> <a href="#">
+					<span class="icon i-app"></span> <span class="text">Ứng dụng<br />
+						MoMo
+				</span>
+			</a>
+			</li>
+			<li class="item third" parent="cus-com">
+				<div class="active-hover" style="display: none;"></div> <a href="#">
+					<span class="icon i-customer"></span> <span class="text">Khách
+						hàng<br> Doanh nghiệp
+				</span>
+			</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="layer-item" style="z-index: 100">
+	<div class="container">
+		<div id="service-place" class="layer-section">
+			<ul>
+				<li class="momo-bank item">
+					<div class="title">
+						<a
+							href="http://news.momo.vnhttp://news.momo.vn/dich-vu-tai-diem-giao-dich/gioi-thieu-cac-dich-vu/">
+							<span class="icon"></span> <span>Giới thiệu chung</span>
+						</a>
+					</div>
+				</li>
+				<li class="momo-services item">
+					<div class="title">
+						<a
+							href="http://news.momo.vn/dich-vu-tai-diem-giao-dich/gioi-thieu-cac-dich-vu/">
+							<span class="icon"></span> <span>Giới thiệu các dịch vụ</span>
+						</a>
+					</div>
+				</li>
+				<li class="momo-charge item">
+					<div class="title">
+						<a href="http://news.momo.vn/dich-vu-tai-diem-giao-dich/bieu-phi/">
+							<span class="icon"></span> <span>Biểu phí</span>
+						</a>
+					</div>
+
+				</li>
+				<li class="momo-identity item">
+					<div class="title">
+						<a
+							href="http://news.momo.vn/dich-vu-tai-diem-giao-dich/dinh-danh/">
+							<span class="icon"></span> <span>Định danh</span>
+						</a>
+					</div>
+				</li>
+				<li class="momo-identity item">
+					<div class="title">
+						<a href="/inbienlai/;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E">
+						<span class="icon-tra-cuu">
+							<img style="width: 25px;height: 29px;/*-webkit-filter: invert(65%);*/padding-left: 0px;margin-left: 2px;" src="/inbienlai/assets/Images/icon-tra-cuu.png;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E" alt="" title="">
+						</span>
+						<span>Tra cứu thông tin giao dịch</span>
+						</a>
+					</div>
+				</li>
+				<li class="momo-service-finder item fourth">
+					<div class="title">
+						<a
+							href="http://news.momo.vn/dich-vu-tai-diem-giao-dich/tim-diem-giao-dich/">
+							<span class="icon"></span> <span>Tìm điểm giao dịch</span>
+						</a>
+					</div>
+				</li>
+
+			</ul>
+		</div>
+		<div id="application" class="layer-section">
+			<ul>
+				<li class="momo-introduce item">
+					<div class="title">
+						<a
+							href="http://news.momo.vn/ung-dung-momo/gioi-thieu-cac-ung-dung-momo/">
+							<span class="icon"></span> <span>Giới thiệu Ứng dụng MoMo</span>
+						</a>
+					</div>
+				</li>
+				<li class="momo-instruction item">
+					<div class="title">
+						<a
+							href="http://news.momo.vn/ung-dung-momo/cac-huong-dan-can-thiet/">
+							<span class="icon"></span> <span>Các hướng dẫn cần thiết</span>
+						</a>
+					</div>
+				</li>
+				<li class="momo-question item">
+					<div class="title">
+						<a href="http://news.momo.vn/ung-dung-momo/hoi-dap/"> <span
+							class="icon"></span> <span>Hỏi đáp</span>
+						</a>
+					</div>
+				</li>
+				<li class="momo-service item">
+					<div class="title">
+						<a
+							href="http://news.momo.vn/ung-dung-momo/dich-vu-tren-ung-dung-momo/">
+							<span class="icon"></span> <span>Dịch vụ trên Ứng dụng
+								MoMo</span>
+						</a>
+					</div>
+				</li>
+				<li class="momo-bank item">
+					<div class="title">
+						<a href="http://news.momo.vn/ung-dung-momo/cac-ngan-hang-ket-noi/">
+							<span class="icon"></span> <span>Các ngân hàng kết nối</span>
+						</a>
+					</div>
+				</li>
+				<li class="momo-charge item">
+					<div class="title">
+						<a href="http://news.momo.vn/ung-dung-momo/bieu-phi/"> <span
+							class="icon"></span> <span>Biểu phí</span>
+						</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div id="cus-com" class="layer-section">
+			<ul>
+				<li class="momo-choice-reason item">
+					<div class="title">
+						<a
+							href="http://news.momo.vn/khach-hang-doanh-nghiep/vi-sao-chon-chung-toi/">
+							<span class="icon"></span> <span>Vì sao chọn chúng tôi</span>
+						</a>
+					</div>
+				</li>
+				<li class="mm-goods item">
+					<div class="title">
+						<a href="http://news.momo.vn/khach-hang-doanh-nghiep/tien-ich/">
+							<span class="icon"></span> <span>Tiện ích</span>
+						</a>
+
+					</div>
+				</li>
+				<li class="mm-supply item">
+					<div class="title">
+						<a
+							href="http://news.momo.vn/khach-hang-doanh-nghiep/dich-vu-cung-cap/">
+							<span class="icon"></span> <span>Dịch vụ cung cấp</span>
+						</a>
+					</div>
+				</li>
+				<li class="momo-partner item">
+					<div class="title">
+						<a href="http://news.momo.vn/khach-hang-doanh-nghiep/doi-tac/">
+							<span class="icon"></span> <span>Đối tác</span>
+						</a>
+					</div>
+				</li>
+				<li class="momo-bank item">
+					<div class="title">
+						<a
+							href="http://news.momo.vn/khach-hang-doanh-nghiep/lien-he-hop-tac/">
+							<span class="icon"></span> <span>Liên hệ hợp tác</span>
+						</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!--END TOP MENU-->
+			
+
+			<!-- Slider Image -->
+			
+			
+				
+
+
+
+
+<div class="main-content container">
+	<div class="main-banner-wrap">
+		<div class="main-banner container">
+			<img src="/inbienlai/assets/Images/home-news/main-layer-tintuc.png;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E" />
+		</div>
+	</div>
+</div>
+			
+
+			<div id="content">
+				<div class="container">
+					<div class="col2-set">
+						<div class="container">
+							<!-- Leftmenu -->
+							
+							
+								
+
+
+
+
+<!--LEFT MENU-->
+<div class="category-news col-xs-4">
+	<div class="select-news">
+        <select class="selectpicker form-control bs-select-hidden" id="select-menu">
+            <option value="/inbienlai/transaction-history/toup-momo-and-withdraw-cash;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E">Nạp MoMo/Rút tiền mặt</option>
+			<option value="/inbienlai/transaction-history/send-and-receive;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E">Gửi/Nhận tiền</option>
+            <option value="/inbienlai/transaction-history/payment;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E">Thanh toán tại Điểm Giao Dịch</option>
+       
+        </select>
+        
+    </div>
+	<ul class="menu-cat">
+		<li>
+			<a href="/inbienlai/;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E"><span style="font: 13.86px arial !important;">Tra cứu thông tin giao dịch</span></a>
+			<ul class="sub-menu-cat" id="link-menu">
+				<li><a href="/inbienlai/transaction-history/toup-momo-and-withdraw-cash;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E" >Nạp MoMo/Rút tiền mặt</a></li>
+				<li><a href="/inbienlai/transaction-history/send-and-receive;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E">Gửi/Nhận tiền</a></li>
+				<li><a href="/inbienlai/transaction-history/payment;jsessionid=B3C39449ED246941A7DB7E4BCDEABF0E">Thanh toán tại Điểm Giao Dịch</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+<!--END LEFT MENU-->
+<script>
+
+	$("#link-menu").find("li").find("a").each(function(){
+		var path = $(this).attr("href");
+		if(window.location.pathname == path){
+			$(this).attr("class","active-news");
+			
+			$("#select-menu").find("option").each(function(){
+				var selectValue = $(this).val();
+				
+				if(path == selectValue ){
+					$(this).attr("selected", true);
+					$('.selectpicker').selectpicker('refresh'); 
+				}
+			})
+			
+		}else {
+			$(this).attr("class","");
+		}
+	})
+
+</script>
+
+							
+							<!-- Content -->
+							
+							
+								
+<!--=== Page Content ===-->
+<!--=== Statboxes ===-->
+<div class="layer-news-wrap col-xs-8" style="min-height: 500px">
+<div class="page-title ">
+		<h2 class="title-each-news title-detail-page">TRA CỨU THÔNG TIN GIAO DỊCH TẠI ĐGD MOMO</h2>
+	</div>
+	<div class="full-content">
+		<p>
+		<span style="font-family:arial,helvetica,sans-serif">
+			<span style="font-size:13px">
+				Với mong muốn mang lại cho Quý Khách hàng những trải nghiệm dễ dàng, tiện lợi và nhanh chóng, MoMo cung cấp thêm trang “Tra cứu thông tin giao dịch”.
+			</span>
+		</span>
+	</p>
+	<p>
+		<span style="font-family:arial,helvetica,sans-serif">
+			<span style="font-size:13px">
+				Trang thông tin nhằm giúp Quý Khách hàng tra cứu và lưu trữ lịch sử giao dịch của mình tại các Điểm Giao Dịch MoMo bất cứ khi nào mong muốn. 
+			</span>
+		</span>
+	</p>
+	<p>
+		<span style="font-family:arial,helvetica,sans-serif">
+			<span style="font-size:13px">
+				Đây là nỗ lực của MoMo trong việc hiện đại hóa, đơn giản hóa quy trình in biên lai giao dịch.
+			</span>
+		</span>
+	</p>
+	<p>
+		<span style="font-family:arial,helvetica,sans-serif">
+			<span style="font-size:13px">
+				Tại đây, tất cả Quý khách hàng sẽ được cung cấp đầy đủ thông tin giao dịch tại các Điểm giao dịch MoMo của mình, chỉ với một bước đơn giản là điền thông tin vào các mục có sẵn của chúng tôi.
+			</span>
+		</span>
+	</p>
+	<p>
+		<span style="font-family:arial,helvetica,sans-serif">
+			<span style="font-size:13px">
+				Trân trọng cảm ơn Quý khách hàng đã luôn đồng hành cùng MoMo! 
+			</span>
+		</span>
+	</p>
+	</div>
+	
+	
+</div>
+							
+						</div>
+
+					</div>
+				</div>
+				<!-- /.container -->
+			</div>
+
+			<!-- Footer -->
+			
+			
+				
+
+<!--FOOTER-->
+<div class="footer-mobile mobile-display">
+	<div class="icon-footer-show"></div>
+	<div class="icon-footer-hide" style="display: none;"></div>
+	<ul>
+		<li>
+			<a href="http://news.momo.vn/gioi-thieu/gioi-thieu-chung/">Giới thiệu </a>
+		</li>
+		<li>
+			<a href="http://news.momo.vn/tin-tuc/">Tin Tức </a>
+		</li>
+		<li>
+			<a href="http://news.momo.vn/tuyen-dung/viec-lam-hot/">Tuyển dụng </a>
+		</li>
+		<li>
+			<a href="http://news.momo.vn/lien-he-cong-ty/">Liên hệ</a>
+		</li>
+	</ul>
+</div>
+<footer>
+	<div class="container">
+		<ul class="footer-link">
+			<li>
+				<a href="http://news.momo.vn/gioi-thieu/gioi-thieu-chung/">Giới thiệu</a>
+			</li>
+			<li>
+				<a href="http://news.momo.vn/tin-tuc/">Tin tức</a>
+			</li>
+			<li>
+				<a href="http://news.momo.vn/tuyen-dung/viec-lam-hot/">Tuyển dụng</a>
+			</li>
+			<li>
+				<a href="http://news.momo.vn/lien-he-cong-ty/">Liên hệ</a>
+			</li>
+		</ul>
+		<div class="copyright">©2015 M_Service copyright</div>
+	</div>
+</footer>
+<!--END FOOTER-->
+			
+		</div>
+	</div>
+	<script>
+		$('.selectpicker').selectpicker();
+	</script>
+</body>
+
+</html>

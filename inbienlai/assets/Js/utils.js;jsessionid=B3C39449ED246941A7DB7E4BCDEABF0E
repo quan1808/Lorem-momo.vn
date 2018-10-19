@@ -1,0 +1,48 @@
+﻿function validateNumber(e) {
+		//né trình duyệt CocCoc  
+		if( /coc_coc_browser/i.test(navigator.userAgent) ) {
+			return;
+		}
+		// Ensure that it is a number and stop the keypress
+		if (e.shiftKey) {
+		  e.preventDefault();
+		}
+
+//		if ($.inArray(e.code, ["Digit0","Digit1","Digit2","Digit3","Digit4","Digit5","Digit6","Digit7","Digit8","Digit9","Backspace", "Numpad0","Numpad1","Numpad2","Numpad3","Numpad4","Numpad5","Numpad6","Numpad7","Numpad8","Numpad9","ArrowLeft","ArrowRight"]) == -1 ){
+//			e.preventDefault();
+//		}
+		
+		if ($.inArray(e.keyCode, [8,48,49,50,51,52,53,54,55,56,57,96,97,98,99,100,101,102,103,104,105]) == -1 ){
+			e.preventDefault();
+		}
+		console.log("keypress",e.code, e.keyCode)
+}
+
+//Format theo định dạng tiền (100.000)
+function Comma(Num) { // function to add commas to textboxes
+	Num += '';
+	Num = Num.replace(',', '');
+	Num = Num.replace(',', '');
+	Num = Num.replace(',', '');
+	Num = Num.replace(',', '');
+	Num = Num.replace(',', '');
+	Num = Num.replace(',', '');
+	x = Num.split('.');
+	x1 = x[0];
+	x2 = x.length > 1 ? '.' + x[1] : '';
+	var rgx = /(\d+)(\d{3})/;
+	while (rgx.test(x1))
+		x1 = x1.replace(rgx, '$1' + ',' + '$2');
+	return x1 + x2;
+}
+
+
+function getDateString (data){
+	if(data){
+		var temp = data.split(" ")[0].split("-");
+		var strDate = "Ngày " + temp[0] + " Tháng " + temp[1]+ " Năm " + temp[2];
+		return strDate;
+	}
+	
+	return "";
+}

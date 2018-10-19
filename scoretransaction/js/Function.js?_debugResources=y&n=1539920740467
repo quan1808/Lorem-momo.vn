@@ -1,0 +1,1143 @@
+$(document)
+		.ready(
+				function() {
+					
+					$("#moneyField").hide();
+					//ngan khong cho cac ky tu dac biet vao input				
+					$('input[type=text]').keyup(function(){
+						text = replaceCharacter( $(this).val() );
+						$(this).val( text );
+					});
+					$('input[type=text]').blur(function(){
+						text = replaceCharacter( $(this).val() );
+						$(this).val( text );
+					});	
+					$('input[type=text]').change(function(){
+						
+						text = replaceCharacter( $(this).val() );
+						$(this).val( text );
+					});		
+					$('input[type=text]').on('paste', function(e){ 
+						text = replaceCharacter( $(this).val() );
+						$(this).val( text );
+					});
+					$('input[type=text]').focusout(function(){ 
+						text = replaceCharacter( $(this).val() );
+						$(this).val( text );
+					});
+					
+					//end
+					
+					
+					$('.hdcontent').hide();
+
+					$("#fromDatepicker").datepicker(
+							{
+								dateFormat : 'dd/mm/yy',
+								maxDate : '0',
+								onSelect : function(selected) {
+									$("#toDatepicker").datepicker("option",
+											"minDate", selected)
+								}
+							}).attr('readonly', 'readonly');
+					$("#toDatepicker").datepicker(
+							{
+								dateFormat : 'dd/mm/yy',
+								maxDate : '0',
+								onSelect : function(selected) {
+									$("#fromDatepicker").datepicker("option",
+											"maxDate", selected)
+								}
+							}).attr('readonly', 'readonly');
+					$("#xacNhanNapTienTanNoi").hide();
+					$("#confirm_tranfer").hide();
+					$(".alert").addClass("in").fadeOut(4500);
+					/* swap open/close side menu icons */
+					$('[data-toggle=collapse]')
+							.click(
+									function() {// toggle icon
+										$(this).find("i")
+										heightmenu
+												.toggleClass("glyphicon-chevron-right glyphicon-chevron-down");
+									});
+					$(".phone").text(
+							function(i, text) {
+								text = text.replace(/(\d{4,5})(\d{3})(\d{3})/,
+										"$1 $2 $3");
+								return text;
+							});
+
+					$("div#backgroundPopup").click(function() {
+						disablePopup(); // function close pop up
+					});
+					$(".amount").text(function(i, text) {
+						text = text.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+						return text;
+					});
+					$(".bankID").text(
+							function(i, text) {
+								text = text.replace(/(\d{4})(\d{3,6})(\d{3})/,
+										"$1******$3");
+								return text;
+							});
+
+					if (typeof topupHide == 'function') {
+						topupHide();
+					}
+
+					if (typeof topupNapTien == 'function') {
+						topupNapTien();
+					}
+
+					if (typeof topupChuyenTien == 'function') {
+						topupChuyenTien();
+					}
+
+					if (typeof topupRutTien == 'function') {
+						topupRutTien();
+					}
+
+					if (typeof topupNapTienTanNoi == 'function') {
+						topupNapTienTanNoi();
+					}
+
+					if (typeof topupChuyenTienNgay == 'function') {
+						topupChuyenTienNgay();
+					}
+
+					$('input.phone')
+							.keyup(
+									function(event) {
+
+										// skip for arrow keys
+										if (event.which >= 37
+												&& event.which <= 40)
+											return;
+
+										// format number
+										$(this)
+												.val(
+														function(index, value) {
+															return value
+																	.replace(
+																			/\D/g,
+																			'')
+																	.replace(
+																			/(\d{4,5})(\d{3})(\d{3})/,
+																			"$1 $2 $3");
+														});
+									});
+					//	
+					$('input.money')
+							.keyup(
+									function(event) {
+
+										// skip for arrow keys
+										if (event.which >= 37
+												&& event.which <= 40)
+											return;
+
+										// format number
+										$(this)
+												.val(
+														function(index, value) {
+															return value
+																	.replace(
+																			/\D/g,
+																			'')
+																	.replace(
+																			/\B(?=(\d{3})+(?!\d))/g,
+																			",");
+														});
+									});
+				});
+function showPopUp(controller, action,type, param1, param2, param3, param4, param5) {
+	//param1,param2,param3 la gia tri cac input tren form theo thu tu
+	if (controller === "" || action === "" ) {
+		alert('thieu thong tin');
+		return false;
+	}
+	$.ajax({
+		url : "../banknetLink/showBankResource",
+		dataType : 'json',
+		data : {
+			mycontroller : controller,
+			myaction : action,
+			type:type,
+			param1 : param1,
+			param2 : param2,
+			param3 : param3,
+			param4: param4,
+			param5: param5,
+			
+		},
+		beforeSend : function() {
+		},
+		success : function(data) {
+			if (data.message != null) {
+				$("#errorMessageConfirm").html(data.message).addClass(
+						"red_text");
+				return false;
+			}
+			$("#toPopup").html("<div onclick='disablePopup()' class='close_popup' ></div>"+data.template);
+			loading(); // loading
+			setTimeout(function() { // then show popup, deley in .5 second
+				loadPopup(); // function show popup
+			}, 500); // .5 second
+			return false;
+		},
+		error : function(request, status, error) {
+			alert(error);
+		},
+		complete : function() {
+		}
+	});
+}
+
+
+function showPopUpComfirm() {
+	$.ajax({
+		url : "../agent/popup",
+		
+		success : function(data) {
+			
+			//$("#toPopup").html("<div onclick='disablePopup()' class='close_popup' ></div>"+data.template);
+			$("#toPopup").html("<div onclick='disablePopup()' class='close_popup' ></div>"+data.template);
+			loading(); // loading
+			setTimeout(function() { // then show popup, deley in .5 second
+				loadPopup(); // function show popup
+			}, 500); // .5 second
+			return false;
+			
+		},
+		error : function(request, status, error) {
+			alert(error);
+		},
+		complete : function() {
+		}
+	});
+			
+}
+
+/** ************ start: functions. ************* */
+$('*').keyup(function(event) {
+	if (event.which == 27) { // 27 is 'Ecs' in the keyboard
+		disablePopup(); // function close pop up
+	}
+});
+function loading() {
+	$("div.loader").show();
+}
+function closeloading() {
+	$("div.loader").fadeOut('normal');
+}
+
+function loadPopup() {
+	closeloading(); // fadeout loading
+	// fadein popup div
+	$("#backgroundPopup").css("opacity", "0.7"); // css opacity, supports
+													// IE7, IE8
+	$("#backgroundPopup").fadeIn(0001);
+	$("#toPopup").fadeIn(0500);
+}
+
+function disablePopup() {
+	$("#toPopup").fadeOut("normal");
+	$("#backgroundPopup").fadeOut("normal");
+}
+function showCardInfo(controller, action, bankCode, bankname, param1, param2, param3, param4, param5) {
+	
+	//var txtController = $("#txtController").val();
+	//var txtAction = $("#txtAction").val();
+	//var txtTransType = $("#txtTransType").val();
+	/*
+	var txtPartner = $("#txtPartner").val();
+	var txtAmount = $("#txtAmount").val();
+	var txtComment = $("#txtComment").val();*/
+
+
+
+	$.ajax({
+		url : "../banknetLink/toCardInfo",
+		dataType : 'json',
+		type : 'POST',
+		data : {
+			//accountID : accountID,
+			//openDate : openDate,
+			//bankCode : bankCode,
+			//bankname : bankname,
+			//param1:param1,
+			//param2:param2,
+			//param3:param3,
+		},
+		beforeSend : function() {
+			
+		},
+		success : function(data) {
+			$("#toPopup").fadeOut("normal");
+			$("#backgroundPopup").fadeOut("normal");
+			$("div#body").html(data.template);
+			
+			$('#mycontroller').val(controller);
+			$('#myaction').val(action);
+			$('#bankCode').val(bankCode);
+			$('#bankname').val(bankname);
+			$('#param1').val(param1);
+			$('#param2').val(param2);
+			$('#param3').val(param3);
+			$('#param4').val(param4);
+			$('#param5').val(param5);
+
+
+			/*
+			setCardInfo(ownerName, accountID, openDate);
+			$("#txtController").val(txtController);
+			$("#txtAction").val(txtAction);
+			$("#txtPartner").val(txtPartner);
+			$("#txtAmount").val(txtAmount);
+			$("#txtTransType").val(txtTransType);
+			$("#txtComment").val(txtComment);
+			$("#bankCode").val(bankCode);**/
+			return false;
+		},
+		error : function(request, status, error) {
+		},
+		complete : function() {
+		}
+	});
+}
+function setCardInfo(ownerName, accountID, openDate) {
+	var month = openDate.substring(0, 2);
+	$("#txtBankCardOwner").val(ownerName);
+	$("#txtBankCardCardId").val(accountID);
+	if (month > 9) {
+		$("#cbBankCardMonth option[value='" + openDate.substring(0, 2) + "']")
+				.attr('selected', 'selected');
+	} else {
+		$("#cbBankCardMonth option[value='" + openDate.substring(1, 2) + "']")
+				.attr('selected', 'selected');
+	}
+
+	$("#cbBankCardYear option[value='" + openDate.substring(3) + "']").attr(
+			'selected', 'selected');
+	$("#bankCardDiv").fadeIn(0001);
+}
+function checkOpenDate(month, year) {
+	var date = new Date();
+	var nYear = date.getFullYear();
+	var nMonth = date.getMonth() + 1;
+	if (year == nYear && month > nMonth) {
+		return false;
+	} else {
+		return true;
+	}
+}
+function setActiveMenuHoiDap(id) {
+	if (id == 'ud') {
+		$('#text_meunu_ud').css('color', '#B0006E');
+		$('#text_meunu_ud').css("font-weight", "bold");
+		$('#text_meunu_bm').css('color', '');
+		$('#text_meunu_dv').css('color', '');
+		$('#text_meunu_phi').css('color', '');
+		$('#text_meunu_ph').css('color', '');
+		$('#text_meunu_bm').css('font-weight', '');
+		$('#text_meunu_dv').css('font-weight', '');
+		$('#text_meunu_phi').css('font-weight', '');
+		$('#text_meunu_ph').css('font-weight', '');
+	}
+	if (id == 'bm') {
+		$('#text_meunu_bm').css('color', '#B0006E');
+		$('#text_meunu_bm').css("font-weight", "bold");
+		$('#text_meunu_ud').css('color', '');
+		$('#text_meunu_dv').css('color', '');
+		$('#text_meunu_phi').css('color', '');
+		$('#text_meunu_ph').css('color', '');
+		$('#text_meunu_ud').css('font-weight', '');
+		$('#text_meunu_dv').css('font-weight', '');
+		$('#text_meunu_phi').css('font-weight', '');
+		$('#text_meunu_ph').css('font-weight', '');
+	}
+	if (id == 'dv') {
+		$('#text_meunu_dv').css('color', '#B0006E');
+		$('#text_meunu_dv').css("font-weight", "bold");
+		$('#text_meunu_ud').css('color', '');
+		$('#text_meunu_bm').css('color', '');
+		$('#text_meunu_ph').css('color', '');
+		$('#text_meunu_phi').css('color', '');
+		$('#text_meunu_ud').css('font-weight', '');
+		$('#text_meunu_bm').css('font-weight', '');
+		$('#text_meunu_ph').css('font-weight', '');
+		$('#text_meunu_phi').css("font-weight", "")
+	}
+	if (id == 'phi') {
+		$('#text_meunu_phi').css('color', '#B0006E');
+		$('#text_meunu_phi').css("font-weight", "bold");
+		$('#text_meunu_ud').css('color', '');
+		$('#text_meunu_bm').css('color', '');
+		$('#text_meunu_dv').css('color', '');
+		$('#text_meunu_ph').css('color', '');
+		$('#text_meunu_ud').css('font-weight', '');
+		$('#text_meunu_bm').css('font-weight', '');
+		$('#text_meunu_dv').css('font-weight', '');
+		$('#text_meunu_ph').css('font-weight', '');
+	}
+	if (id == 'ph') {
+		$('#text_meunu_ph').css('color', '#B0006E');
+		$('#text_meunu_ph').css("font-weight", "bold");
+		$('#text_meunu_ud').css('color', '');
+		$('#text_meunu_bm').css('color', '');
+		$('#text_meunu_dv').css('color', '');
+		$('#text_meunu_phi').css('color', '');
+		$('#text_meunu_ud').css('font-weight', '');
+		$('#text_meunu_bm').css('font-weight', '');
+		$('#text_meunu_dv').css('font-weight', '');
+		$('#text_meunu_phi').css('font-weight', '');
+	}
+}
+
+function setclassActiveMenuMain(id) {
+	if (id == "ct") {
+		document.getElementById("nt").className = document.getElementById("nt").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("rt").className = document.getElementById("rt").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("dv").className = document.getElementById("dv").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("ql").className = document.getElementById("ql").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("dgd").className = document
+				.getElementById("dgd").className.replace(
+				/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("hd").className = document.getElementById("hd").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("ct").classList.add("active");
+	}
+	if (id == "nt") {
+		document.getElementById("ct").className = document.getElementById("ct").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("rt").className = document.getElementById("rt").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("dv").className = document.getElementById("dv").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("ql").className = document.getElementById("ql").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("dgd").className = document
+				.getElementById("dgd").className.replace(
+				/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("hd").className = document.getElementById("hd").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+
+		document.getElementById("nt").classList.add("active");
+	}
+	if (id == "rt") {
+		document.getElementById("ct").className = document.getElementById("ct").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("nt").className = document.getElementById("nt").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("dv").className = document.getElementById("dv").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("ql").className = document.getElementById("ql").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("dgd").className = document
+				.getElementById("dgd").className.replace(
+				/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("hd").className = document.getElementById("hd").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("rt").classList.add('active');
+	}
+	if (id == "dv") {
+		document.getElementById("ct").className = document.getElementById("ct").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("rt").className = document.getElementById("rt").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("nt").className = document.getElementById("nt").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("ql").className = document.getElementById("ql").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("dgd").className = document
+				.getElementById("dgd").className.replace(
+				/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("hd").className = document.getElementById("hd").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("dv").classList.add('active');
+	}
+	if (id == "ql") {
+		document.getElementById("ct").className = document.getElementById("ct").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("rt").className = document.getElementById("rt").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("dv").className = document.getElementById("dv").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("nt").className = document.getElementById("nt").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("dgd").className = document
+				.getElementById("dgd").className.replace(
+				/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("hd").className = document.getElementById("hd").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("ql").classList.add('active');
+	}
+
+	if (id == "dgd") {
+		document.getElementById("ct").className = document.getElementById("ct").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("rt").className = document.getElementById("rt").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("nt").className = document.getElementById("nt").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("ql").className = document.getElementById("ql").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("hd").className = document.getElementById("hd").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("dv").className = document.getElementById("dv").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("dgd").classList.add('active');
+	}
+	if (id == "hd") {
+		document.getElementById("ct").className = document.getElementById("ct").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("nt").className = document.getElementById("nt").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("rt").className = document.getElementById("rt").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("dv").className = document.getElementById("dv").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("ql").className = document.getElementById("ql").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("dgd").className = document
+				.getElementById("dgd").className.replace(
+				/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("hd").classList.add('active');
+	}
+}
+
+function heightmenu() {
+	setInterval(function() {
+		var mainHight = document.getElementById('main-content').clientHeight;
+		var leftMenuHieght = document.getElementById('pm_m_left').clientHeight;
+		if (mainHight > leftMenuHieght) {
+			$("#menu").css("height", mainHight);
+		} else if (leftMenuHieght > mainHight) {
+			var redundantHight = leftMenuHieght - mainHight;
+			$("#menu").css("height", leftMenuHieght - redundantHight);
+		}
+		;
+	}, 100);
+}
+
+$(function() {
+
+	var menu_ul = $('.menu1 > li > ul'), menu_a = $('.menu1 > li > a');
+	menu_ul.hide();
+	menu_a.click(function(e) {
+
+		e.preventDefault();
+		if (!$(this).hasClass('active')) {
+			menu_a.removeClass('active');
+			menu_ul.filter(':visible').slideUp('normal');
+			$(this).addClass('active').next().stop(true, true).slideDown(
+					'normal');
+		} else {
+			$(this).removeClass('active');
+			$(this).next().stop(true, true).slideUp('normal');
+
+		}
+		if ($("#ql").hasClass('active')) {
+			reImageActive(document.getElementById("dv"));
+			setImageActive2(document.getElementById("ql"));
+		} else if ($("#dv").hasClass('active')) {
+			reImageActive(document.getElementById("ql"));
+			setImageActive2(document.getElementById("dv"));
+		}
+	});// reheightmenu();
+
+});
+
+function setheight() {
+	var menu_ul = $('.menu2 > li > ul'), menu_a = $('.menu2 > li > a');
+	menu_a.click(setTimeout(function(e) {
+		if (e) {
+			e.preventDefault();
+			var heightoful = $("#ulsubmenu").height();
+
+		}
+	}), 1000);
+}
+
+function setclassActiveMenuteller(id) {
+	if (id == "1") {
+		document.getElementById("2").className = document.getElementById("2").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("3").className = document.getElementById("3").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("1").classList.add('active');
+	}
+	if (id == "2") {
+		document.getElementById("1").className = document.getElementById("1").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("3").className = document.getElementById("3").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("2").classList.add('active');
+	}
+	if (id == "3") {
+		document.getElementById("1").className = document.getElementById("1").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("2").className = document.getElementById("2").className
+				.replace(/(?:^|\s)active(?!\S)/g, '')
+		document.getElementById("3").classList.add('active');
+	}
+}
+
+$(document)
+		.ready(
+				function() {
+
+					var title = $(document).find("title").text();
+					if (title == "Chuyển tiền | Ví điện tử MoMo") {
+						var ct = document.getElementById("ct");
+						ct.classList.add('active');
+						setImageActive(ct);
+						// setTimeout(autoAddClass(), 1000);
+					}
+					if (title == "Nạp tiền | Ví điện tử MoMo") {
+						var nt = document.getElementById("nt");
+						nt.classList.add('active');
+						setImageActive(nt);
+						// setTimeout(autoAddClass(), 1000);
+					}
+
+					if (title == "Rút tiền | Ví điện tử MoMo") {
+						var rt = document.getElementById("rt");
+						rt.classList.add('active');
+						setImageActive(rt);
+						// setTimeout(autoAddClass, 1000);
+					}
+					if (title == "Thông tin tài khoản | Ví điện tử MoMo") {
+						var ql = document.getElementById("ql");
+						ql.classList.add('active');
+						setImageActive2(ql);
+						document.getElementById("tttk").classList
+								.add('subMenuActive');
+						document.getElementById("tttkLink").classList
+								.add('subMenuLinkActive');
+						$("#usermnu").slideDown();
+
+						// ql.next().stop(true, true).slideDown('normal');
+					}
+					if (title == "Quản lý thẻ | Ví điện tử MoMo") {
+						var ql = document.getElementById("ql");
+						ql.classList.add('active');
+						setImageActive2(ql);
+						document.getElementById("qlt").classList
+								.add('subMenuActive');
+						document.getElementById("qltLink").classList
+								.add('subMenuLinkActive');
+						$("#usermnu").slideDown();
+
+						// ql.next().stop(true, true).slideDown('normal');
+					}
+					if (title == "Lịch sử giao dịch | Ví điện tử MoMo") {
+						var ql = document.getElementById("ql");
+						ql.classList.add('active');
+						setImageActive2(ql);
+						document.getElementById("lsgd").classList
+								.add('subMenuActive');
+						document.getElementById("lsgdLink").classList
+								.add('subMenuLinkActive');
+						$("#usermnu").slideDown();
+					}
+					if (title == "Nạp điện thoại | Ví điện tử MoMo") {
+						var dv = document.getElementById("dv");
+						dv.classList.add('active');
+						setImageActive2(dv);
+						document.getElementById("ndt").classList
+								.add('subMenuActive');
+						document.getElementById("ndtLink").classList
+								.add('subMenuLinkActive');
+						$("#dvti").slideDown();
+					}
+					if (title == "Nạp game | Ví điện tử MoMo") {
+						var dv = document.getElementById("dv");
+						dv.classList.add('active');
+						setImageActive2(dv);
+						document.getElementById("ng").classList
+								.add('subMenuActive');
+						document.getElementById("ngLink").classList
+								.add('subMenuLinkActive');
+						$("#dvti").slideDown();
+					}
+					if (title == "Thanh toán hóa đơn | Ví điện tử MoMo") {
+						var dv = document.getElementById("dv");
+						dv.classList.add('active');
+						setImageActive2(dv);
+						document.getElementById("tthd").classList
+								.add('subMenuActive');
+						document.getElementById("tthdLink").classList
+								.add('subMenuLinkActive');
+						$("#dvti").slideDown();
+					}
+					if (title == "Thanh toán vé máy bay | Ví điện tử MoMo") {
+						var dv = document.getElementById("dv");
+						dv.classList.add('active');
+						setImageActive2(dv);
+						document.getElementById("ttvmb").classList
+								.add('subMenuActive');
+						document.getElementById("ttvmbLink").classList
+								.add('subMenuLinkActive');
+						$("#dvti").slideDown();
+					}
+
+					if (title == "Điểm giao dịch | Ví điện tử MoMo") {
+						var ct = document.getElementById("dgd");
+						ct.classList.add('active');
+						setImageActive(ct);
+						// setTimeout(autoAddClass(), 1000);
+					}
+					if (title == "Trợ giúp - Hướng dẫn | Ví điện tử MoMo") {
+						var nt = document.getElementById("hd");
+						nt.classList.add('active');
+						setImageActive(nt);
+						// setTimeout(autoAddClass(), 1000);
+					}
+				});
+function setImageActive(e) {
+
+	$(e).find(".firstImage").css("display", "none");
+	$(e).find(".secondImage").css("display", "inline");
+}
+function setImageActive2(e) {
+
+	$(e).find(".firstImage").css("display", "none");
+	$(e).find(".secondImage").css("display", "inline");
+	$(e).find(".thirdImage").css("display", "inline");
+	$(e).find(".fourthImage").css("display", "none");
+
+}
+function reImageActive(e) {
+	$(".nav").find(".firstImage").css("display", "inline");
+	$(".nav").find(".secondImage").css("display", "none");
+	$(e).find(".thirdImage").css("display", "none");
+	$(e).find(".fourthImage").css("display", "inline");
+
+}
+
+function isPhoneNumber(checkstring) {	
+	var regexDigit_01 =  "^01[0-9]{9}$";// "(0\\d{9,10})$";
+	var regexDigit_09 = "^09[0-9]{8}$";
+	var isValid = checkstring.match(regexDigit_01);
+	
+	if (isValid)
+		return true;	
+	else 
+		{
+			isValid = checkstring.match(regexDigit_09);
+			if (isValid)				
+				return true;						
+		}
+	return false;
+	/*if (isValid == null || checkstring.substring(0, 2) == "00" 
+			&& checkstring.length > 10 || checkstring.split(" ").length > 1)
+		return false;
+	else
+		return true;*/
+}
+
+function getDistrictData(filename) {
+	var valueSelected;
+	var city = document.getElementById("city");
+	valueSelected = city.value;
+	var searchid = document.getElementById("searchid").value;
+	var xmlhttp;
+	if (window.XMLHttpRequest) {
+		xmlhttp = new XMLHttpRequest();
+	} else {
+		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			document.getElementById("distric").innerHTML = xmlhttp.responseText;
+		}
+	}
+	xmlhttp.open("GET",
+			"../scoretransaction/getDistrictdata?cid=" + valueSelected
+					+ "&searchid=" + searchid + "&filename=" + filename, true);
+	xmlhttp.send();
+}
+
+function centerMap(lat, longitude, id) {
+
+	document.getElementById("map").contentWindow.moveToLocation(lat, longitude,
+			id);
+
+	var divstrore = document.getElementsByClassName("divstore");
+	var len = divstrore.length;
+	for (var i = 0; i < len; i++) {
+		divstrore[i].className = divstrore[i].className.replace(
+				/(?:^|\s)divstoreactive(?!\S)/g, '');
+	}
+	;
+	document.getElementById(id).classList.add('divstoreactive');
+}
+
+function closeInfowindow() {
+
+	document.getElementById("map").contentWindow.closeAllInfoWindows();
+}
+
+function validateEmail(email) {
+	var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	return re.test(email);
+}
+function previouspage() {
+	var url = window.location.href;
+	var linkprevious = document.getElementById("previous");
+	var page = document.getElementById("page").value;
+
+	if (url.length >= 94) {
+		if (page - 1 == 0) {
+
+			linkprevious.href = "#"
+		} else {
+			var a = url.replace("pagecount=" + page, "pagecount=" + (page - 1));
+			linkprevious.href = a;
+
+		}
+
+	} else {
+		linkprevious.href = url + "&pagecount=1"
+	}
+	;
+
+}
+function nextpage() {
+	var url = window.location.href;
+	var linknext = document.getElementById("next");
+	var page = document.getElementById("page").value;
+	var pagecount = document.getElementById("pagecount").value;
+	if (url.length >= 94) {
+		if (page + 1 > pagecount) {
+
+			linknext.href = "#"
+		} else {
+
+			var a = url.replace("pagecount=" + page, "pagecount="
+					+ (page - 1 + 2));
+			linknext.href = a;
+
+		}
+
+	} else {
+
+		linknext.href = url + "&pagecount=2";
+
+	}
+	;
+
+}
+function Submit(formId, actionName) {
+	var targetForm = document.getElementById(formId);
+	var action = targetForm.action;
+	targetForm.action = actionName;
+	targetForm.submit();
+	targetForm.action = action;
+}
+
+function doConfirm(buttonName, formId, actionName) {
+
+	if (window.confirm("Bạn có muốn thực hiện việc " + buttonName)) {
+		Submit(formId, actionName);
+	}
+
+	return;
+
+}
+
+function callInformationpage() {
+
+	window.location.assign("../notification/toInformationPage");
+
+}
+
+function updateStatusInformation(id, page, stt) {
+
+	var ul = document.getElementsByName("ulforinfo");
+	var p1 = document.getElementsByName("p1fordate");
+	var f = stt - 1;
+
+	document.getElementById(id).classList.add('normalInformation');
+	document.getElementById(stt).classList.add('normalInformation');
+	ul[f].className = ul[f].className.replace(/(?:^|\s)nav(?!\S)/g, '');
+	ul[f].classList.add('nav1');
+	if (window.XMLHttpRequest) {
+		xmlhttp = new XMLHttpRequest();
+	} else {
+		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			document.getElementById("notification").innerHTML = xmlhttp.responseText;
+
+		}
+	}
+	xmlhttp.open("GET", "../notification/updateStatusOfInformation?idinfo="
+			+ id + "&page=" + page, true);
+	xmlhttp.send();
+
+}
+
+function updateStatusInformation1(title, id) {
+	// setTimeout("location.reload(true);",1000);
+	var page = document.getElementById("page").value
+	// window.location.assign("../notification/informationPageclick?title="+title+"&page="+page);
+	/*
+	 * if (window.XMLHttpRequest){ xmlhttp=new XMLHttpRequest(); }else{
+	 * xmlhttp=new ActiveXObject("Microsoft.XMLHTTP"); }
+	 * xmlhttp.onreadystatechange = function(){ if (xmlhttp.readyState == 4 &&
+	 * xmlhttp.status == 200) { document.getElementById(id).innerHTML =
+	 * xmlhttp.responseText;
+	 *  } }
+	 * xmlhttp.open("GET","/apollo_payment/notification/toInformationPageAjax?tittle="+title,true);
+	 * xmlhttp.send();
+	 */
+}
+
+function goGetToken() {
+	if (!$('#fileInput').val().trim().length > 0
+			&& !$('#imageUrl').val().trim().length > 0) {
+		alert("Vui lòng chọn file hoặc nhập đường dẫn");
+		return false;
+	}
+	$.ajax({
+		type : "POST",
+		url : "../account/toGetToken",
+		dataType : "json",
+		beforeSend : function() {
+			$("#errorMessage").removeClass("red_text");
+			$("#errorMessage").html(
+					"<img src='../images/loading.gif' />  Đang xử lý ... ");
+			$("#errorMessage").show("fast");
+		},
+		success : function(response) {
+			if (response != "") {
+				// alert("token " + response.token);
+				updateAvatar(response.token);
+			} else {
+				return false;
+			}
+		},
+		error : function(response) {
+			return false;
+		},
+		complete : function() {
+
+		}
+	});
+}
+function updateAvatar(token) {
+	var formData = new FormData($("#myForm")[0]);
+	$("#errorMessage").addClass("red_text");
+	$
+			.ajax({
+				url : 'http://172.16.18.198:8446/service/avatar/set?token='
+						+ token,
+				type : 'POST',
+				contentType : false,
+				dataType : "json",
+				data : formData,
+				async : false,
+				success : function(data) {
+					if (data.result == '0') {
+						$("#errorMessage")
+								.html(
+										"<img src='../images/success.png' />  Thay đổi thành công. ");
+						$('.avatarImage').attr(
+								'src',
+								$('.avatarImage').attr('src') + '?'
+										+ Math.random());
+					} else if (data.result == '9') {
+						$("#errorMessage")
+								.html(
+										"<img src='../images/lose.png' />  Không tìm thấy ảnh. ");
+					} else {
+						$("#errorMessage")
+								.html(
+										"<img src='../images/lose.png' />  Thay đổi ảnh đại diện thất bại. ");
+					}
+					return false;
+				},
+				error : function(data) {
+					$("#errorMessage")
+							.html(
+									"<img src='../images/lose.png' />  Thay đổi ảnh đại diện thất bại. ");
+					return false;
+				},
+				cache : false,
+				processData : false
+			});
+}
+
+function testcallvariable() {
+	alert("start");
+	alert("map value " + test.val());
+	alert("center " + window.map.getCenter());
+}
+function isNumberKey(evt) {
+	var charCode = (evt.which) ? evt.which : event.keyCode
+	if (charCode > 31 && (charCode < 48 || charCode > 57))
+		return false;
+	return true;
+}
+
+function FormatToCurrency(num) {
+	num = num.toString().replace(/\$|\,/g, '');
+	if (isNaN(num))
+		num = "0";
+	
+	sign = (num == (num = Math.abs(num)));
+	
+	num = Math.floor(num * 100 + 0.50000000001);
+	cents = num % 100;
+	num = Math.floor(num / 100).toString();
+	if (cents < 10)
+		cents = "0" + cents;
+	for (var i = 0; i < Math.floor((num.length - (1 + i)) / 3); i++)
+		num = num.substring(0, num.length - (4 * i + 3)) + ','
+				+ num.substring(num.length - (4 * i + 3));
+	return num;
+	
+}
+
+
+
+
+function removeUnicodeString(paramString){
+	var Latinise={};Latinise.latin_map={"Á":"A","Ă":"A","Ắ":"A","Ặ":"A","Ằ":"A","Ẳ":"A","Ẵ":"A","Ǎ":"A","Â":"A","Ấ":"A","Ậ":"A","Ầ":"A","Ẩ":"A","Ẫ":"A","Ä":"A","Ǟ":"A","Ȧ":"A","Ǡ":"A","Ạ":"A","Ȁ":"A","À":"A","Ả":"A","Ȃ":"A","Ā":"A","Ą":"A","Å":"A","Ǻ":"A","Ḁ":"A","Ⱥ":"A","Ã":"A","Ꜳ":"AA","Æ":"AE","Ǽ":"AE","Ǣ":"AE","Ꜵ":"AO","Ꜷ":"AU","Ꜹ":"AV","Ꜻ":"AV","Ꜽ":"AY","Ḃ":"B","Ḅ":"B","Ɓ":"B","Ḇ":"B","Ƀ":"B","Ƃ":"B","Ć":"C","Č":"C","Ç":"C","Ḉ":"C","Ĉ":"C","Ċ":"C","Ƈ":"C","Ȼ":"C","Ď":"D","Ḑ":"D","Ḓ":"D","Ḋ":"D","Ḍ":"D","Ɗ":"D","Ḏ":"D","ǲ":"D","ǅ":"D","Đ":"D","Ƌ":"D","Ǳ":"DZ","Ǆ":"DZ","É":"E","Ĕ":"E","Ě":"E","Ȩ":"E","Ḝ":"E","Ê":"E","Ế":"E","Ệ":"E","Ề":"E","Ể":"E","Ễ":"E","Ḙ":"E","Ë":"E","Ė":"E","Ẹ":"E","Ȅ":"E","È":"E","Ẻ":"E","Ȇ":"E","Ē":"E","Ḗ":"E","Ḕ":"E","Ę":"E","Ɇ":"E","Ẽ":"E","Ḛ":"E","Ꝫ":"ET","Ḟ":"F","Ƒ":"F","Ǵ":"G","Ğ":"G","Ǧ":"G","Ģ":"G","Ĝ":"G","Ġ":"G","Ɠ":"G","Ḡ":"G","Ǥ":"G","Ḫ":"H","Ȟ":"H","Ḩ":"H","Ĥ":"H","Ⱨ":"H","Ḧ":"H","Ḣ":"H","Ḥ":"H","Ħ":"H","Í":"I","Ĭ":"I","Ǐ":"I","Î":"I","Ï":"I","Ḯ":"I","İ":"I","Ị":"I","Ȉ":"I","Ì":"I","Ỉ":"I","Ȋ":"I","Ī":"I","Į":"I","Ɨ":"I","Ĩ":"I","Ḭ":"I","Ꝺ":"D","Ꝼ":"F","Ᵹ":"G","Ꞃ":"R","Ꞅ":"S","Ꞇ":"T","Ꝭ":"IS","Ĵ":"J","Ɉ":"J","Ḱ":"K","Ǩ":"K","Ķ":"K","Ⱪ":"K","Ꝃ":"K","Ḳ":"K","Ƙ":"K","Ḵ":"K","Ꝁ":"K","Ꝅ":"K","Ĺ":"L","Ƚ":"L","Ľ":"L","Ļ":"L","Ḽ":"L","Ḷ":"L","Ḹ":"L","Ⱡ":"L","Ꝉ":"L","Ḻ":"L","Ŀ":"L","Ɫ":"L","ǈ":"L","Ł":"L","Ǉ":"LJ","Ḿ":"M","Ṁ":"M","Ṃ":"M","Ɱ":"M","Ń":"N","Ň":"N","Ņ":"N","Ṋ":"N","Ṅ":"N","Ṇ":"N","Ǹ":"N","Ɲ":"N","Ṉ":"N","Ƞ":"N","ǋ":"N","Ñ":"N","Ǌ":"NJ","Ó":"O","Ŏ":"O","Ǒ":"O","Ô":"O","Ố":"O","Ộ":"O","Ồ":"O","Ổ":"O","Ỗ":"O","Ö":"O","Ȫ":"O","Ȯ":"O","Ȱ":"O","Ọ":"O","Ő":"O","Ȍ":"O","Ò":"O","Ỏ":"O","Ơ":"O","Ớ":"O","Ợ":"O","Ờ":"O","Ở":"O","Ỡ":"O","Ȏ":"O","Ꝋ":"O","Ꝍ":"O","Ō":"O","Ṓ":"O","Ṑ":"O","Ɵ":"O","Ǫ":"O","Ǭ":"O","Ø":"O","Ǿ":"O","Õ":"O","Ṍ":"O","Ṏ":"O","Ȭ":"O","Ƣ":"OI","Ꝏ":"OO","Ɛ":"E","Ɔ":"O","Ȣ":"OU","Ṕ":"P","Ṗ":"P","Ꝓ":"P","Ƥ":"P","Ꝕ":"P","Ᵽ":"P","Ꝑ":"P","Ꝙ":"Q","Ꝗ":"Q","Ŕ":"R","Ř":"R","Ŗ":"R","Ṙ":"R","Ṛ":"R","Ṝ":"R","Ȑ":"R","Ȓ":"R","Ṟ":"R","Ɍ":"R","Ɽ":"R","Ꜿ":"C","Ǝ":"E","Ś":"S","Ṥ":"S","Š":"S","Ṧ":"S","Ş":"S","Ŝ":"S","Ș":"S","Ṡ":"S","Ṣ":"S","Ṩ":"S","Ť":"T","Ţ":"T","Ṱ":"T","Ț":"T","Ⱦ":"T","Ṫ":"T","Ṭ":"T","Ƭ":"T","Ṯ":"T","Ʈ":"T","Ŧ":"T","Ɐ":"A","Ꞁ":"L","Ɯ":"M","Ʌ":"V","Ꜩ":"TZ","Ú":"U","Ŭ":"U","Ǔ":"U","Û":"U","Ṷ":"U","Ü":"U","Ǘ":"U","Ǚ":"U","Ǜ":"U","Ǖ":"U","Ṳ":"U","Ụ":"U","Ű":"U","Ȕ":"U","Ù":"U","Ủ":"U","Ư":"U","Ứ":"U","Ự":"U","Ừ":"U","Ử":"U","Ữ":"U","Ȗ":"U","Ū":"U","Ṻ":"U","Ų":"U","Ů":"U","Ũ":"U","Ṹ":"U","Ṵ":"U","Ꝟ":"V","Ṿ":"V","Ʋ":"V","Ṽ":"V","Ꝡ":"VY","Ẃ":"W","Ŵ":"W","Ẅ":"W","Ẇ":"W","Ẉ":"W","Ẁ":"W","Ⱳ":"W","Ẍ":"X","Ẋ":"X","Ý":"Y","Ŷ":"Y","Ÿ":"Y","Ẏ":"Y","Ỵ":"Y","Ỳ":"Y","Ƴ":"Y","Ỷ":"Y","Ỿ":"Y","Ȳ":"Y","Ɏ":"Y","Ỹ":"Y","Ź":"Z","Ž":"Z","Ẑ":"Z","Ⱬ":"Z","Ż":"Z","Ẓ":"Z","Ȥ":"Z","Ẕ":"Z","Ƶ":"Z","Ĳ":"IJ","Œ":"OE","ᴀ":"A","ᴁ":"AE","ʙ":"B","ᴃ":"B","ᴄ":"C","ᴅ":"D","ᴇ":"E","ꜰ":"F","ɢ":"G","ʛ":"G","ʜ":"H","ɪ":"I","ʁ":"R","ᴊ":"J","ᴋ":"K","ʟ":"L","ᴌ":"L","ᴍ":"M","ɴ":"N","ᴏ":"O","ɶ":"OE","ᴐ":"O","ᴕ":"OU","ᴘ":"P","ʀ":"R","ᴎ":"N","ᴙ":"R","ꜱ":"S","ᴛ":"T","ⱻ":"E","ᴚ":"R","ᴜ":"U","ᴠ":"V","ᴡ":"W","ʏ":"Y","ᴢ":"Z","á":"a","ă":"a","ắ":"a","ặ":"a","ằ":"a","ẳ":"a","ẵ":"a","ǎ":"a","â":"a","ấ":"a","ậ":"a","ầ":"a","ẩ":"a","ẫ":"a","ä":"a","ǟ":"a","ȧ":"a","ǡ":"a","ạ":"a","ȁ":"a","à":"a","ả":"a","ȃ":"a","ā":"a","ą":"a","ᶏ":"a","ẚ":"a","å":"a","ǻ":"a","ḁ":"a","ⱥ":"a","ã":"a","ꜳ":"aa","æ":"ae","ǽ":"ae","ǣ":"ae","ꜵ":"ao","ꜷ":"au","ꜹ":"av","ꜻ":"av","ꜽ":"ay","ḃ":"b","ḅ":"b","ɓ":"b","ḇ":"b","ᵬ":"b","ᶀ":"b","ƀ":"b","ƃ":"b","ɵ":"o","ć":"c","č":"c","ç":"c","ḉ":"c","ĉ":"c","ɕ":"c","ċ":"c","ƈ":"c","ȼ":"c","ď":"d","ḑ":"d","ḓ":"d","ȡ":"d","ḋ":"d","ḍ":"d","ɗ":"d","ᶑ":"d","ḏ":"d","ᵭ":"d","ᶁ":"d","đ":"d","ɖ":"d","ƌ":"d","ı":"i","ȷ":"j","ɟ":"j","ʄ":"j","ǳ":"dz","ǆ":"dz","é":"e","ĕ":"e","ě":"e","ȩ":"e","ḝ":"e","ê":"e","ế":"e","ệ":"e","ề":"e","ể":"e","ễ":"e","ḙ":"e","ë":"e","ė":"e","ẹ":"e","ȅ":"e","è":"e","ẻ":"e","ȇ":"e","ē":"e","ḗ":"e","ḕ":"e","ⱸ":"e","ę":"e","ᶒ":"e","ɇ":"e","ẽ":"e","ḛ":"e","ꝫ":"et","ḟ":"f","ƒ":"f","ᵮ":"f","ᶂ":"f","ǵ":"g","ğ":"g","ǧ":"g","ģ":"g","ĝ":"g","ġ":"g","ɠ":"g","ḡ":"g","ᶃ":"g","ǥ":"g","ḫ":"h","ȟ":"h","ḩ":"h","ĥ":"h","ⱨ":"h","ḧ":"h","ḣ":"h","ḥ":"h","ɦ":"h","ẖ":"h","ħ":"h","ƕ":"hv","í":"i","ĭ":"i","ǐ":"i","î":"i","ï":"i","ḯ":"i","ị":"i","ȉ":"i","ì":"i","ỉ":"i","ȋ":"i","ī":"i","į":"i","ᶖ":"i","ɨ":"i","ĩ":"i","ḭ":"i","ꝺ":"d","ꝼ":"f","ᵹ":"g","ꞃ":"r","ꞅ":"s","ꞇ":"t","ꝭ":"is","ǰ":"j","ĵ":"j","ʝ":"j","ɉ":"j","ḱ":"k","ǩ":"k","ķ":"k","ⱪ":"k","ꝃ":"k","ḳ":"k","ƙ":"k","ḵ":"k","ᶄ":"k","ꝁ":"k","ꝅ":"k","ĺ":"l","ƚ":"l","ɬ":"l","ľ":"l","ļ":"l","ḽ":"l","ȴ":"l","ḷ":"l","ḹ":"l","ⱡ":"l","ꝉ":"l","ḻ":"l","ŀ":"l","ɫ":"l","ᶅ":"l","ɭ":"l","ł":"l","ǉ":"lj","ſ":"s","ẜ":"s","ẛ":"s","ẝ":"s","ḿ":"m","ṁ":"m","ṃ":"m","ɱ":"m","ᵯ":"m","ᶆ":"m","ń":"n","ň":"n","ņ":"n","ṋ":"n","ȵ":"n","ṅ":"n","ṇ":"n","ǹ":"n","ɲ":"n","ṉ":"n","ƞ":"n","ᵰ":"n","ᶇ":"n","ɳ":"n","ñ":"n","ǌ":"nj","ó":"o","ŏ":"o","ǒ":"o","ô":"o","ố":"o","ộ":"o","ồ":"o","ổ":"o","ỗ":"o","ö":"o","ȫ":"o","ȯ":"o","ȱ":"o","ọ":"o","ő":"o","ȍ":"o","ò":"o","ỏ":"o","ơ":"o","ớ":"o","ợ":"o","ờ":"o","ở":"o","ỡ":"o","ȏ":"o","ꝋ":"o","ꝍ":"o","ⱺ":"o","ō":"o","ṓ":"o","ṑ":"o","ǫ":"o","ǭ":"o","ø":"o","ǿ":"o","õ":"o","ṍ":"o","ṏ":"o","ȭ":"o","ƣ":"oi","ꝏ":"oo","ɛ":"e","ᶓ":"e","ɔ":"o","ᶗ":"o","ȣ":"ou","ṕ":"p","ṗ":"p","ꝓ":"p","ƥ":"p","ᵱ":"p","ᶈ":"p","ꝕ":"p","ᵽ":"p","ꝑ":"p","ꝙ":"q","ʠ":"q","ɋ":"q","ꝗ":"q","ŕ":"r","ř":"r","ŗ":"r","ṙ":"r","ṛ":"r","ṝ":"r","ȑ":"r","ɾ":"r","ᵳ":"r","ȓ":"r","ṟ":"r","ɼ":"r","ᵲ":"r","ᶉ":"r","ɍ":"r","ɽ":"r","ↄ":"c","ꜿ":"c","ɘ":"e","ɿ":"r","ś":"s","ṥ":"s","š":"s","ṧ":"s","ş":"s","ŝ":"s","ș":"s","ṡ":"s","ṣ":"s","ṩ":"s","ʂ":"s","ᵴ":"s","ᶊ":"s","ȿ":"s","ɡ":"g","ᴑ":"o","ᴓ":"o","ᴝ":"u","ť":"t","ţ":"t","ṱ":"t","ț":"t","ȶ":"t","ẗ":"t","ⱦ":"t","ṫ":"t","ṭ":"t","ƭ":"t","ṯ":"t","ᵵ":"t","ƫ":"t","ʈ":"t","ŧ":"t","ᵺ":"th","ɐ":"a","ᴂ":"ae","ǝ":"e","ᵷ":"g","ɥ":"h","ʮ":"h","ʯ":"h","ᴉ":"i","ʞ":"k","ꞁ":"l","ɯ":"m","ɰ":"m","ᴔ":"oe","ɹ":"r","ɻ":"r","ɺ":"r","ⱹ":"r","ʇ":"t","ʌ":"v","ʍ":"w","ʎ":"y","ꜩ":"tz","ú":"u","ŭ":"u","ǔ":"u","û":"u","ṷ":"u","ü":"u","ǘ":"u","ǚ":"u","ǜ":"u","ǖ":"u","ṳ":"u","ụ":"u","ű":"u","ȕ":"u","ù":"u","ủ":"u","ư":"u","ứ":"u","ự":"u","ừ":"u","ử":"u","ữ":"u","ȗ":"u","ū":"u","ṻ":"u","ų":"u","ᶙ":"u","ů":"u","ũ":"u","ṹ":"u","ṵ":"u","ᵫ":"ue","ꝸ":"um","ⱴ":"v","ꝟ":"v","ṿ":"v","ʋ":"v","ᶌ":"v","ⱱ":"v","ṽ":"v","ꝡ":"vy","ẃ":"w","ŵ":"w","ẅ":"w","ẇ":"w","ẉ":"w","ẁ":"w","ⱳ":"w","ẘ":"w","ẍ":"x","ẋ":"x","ᶍ":"x","ý":"y","ŷ":"y","ÿ":"y","ẏ":"y","ỵ":"y","ỳ":"y","ƴ":"y","ỷ":"y","ỿ":"y","ȳ":"y","ẙ":"y","ɏ":"y","ỹ":"y","ź":"z","ž":"z","ẑ":"z","ʑ":"z","ⱬ":"z","ż":"z","ẓ":"z","ȥ":"z","ẕ":"z","ᵶ":"z","ᶎ":"z","ʐ":"z","ƶ":"z","ɀ":"z","ﬀ":"ff","ﬃ":"ffi","ﬄ":"ffl","ﬁ":"fi","ﬂ":"fl","ĳ":"ij","œ":"oe","ﬆ":"st","ₐ":"a","ₑ":"e","ᵢ":"i","ⱼ":"j","ₒ":"o","ᵣ":"r","ᵤ":"u","ᵥ":"v","ₓ":"x"};
+	paramString = paramString.replace(/[^A-Za-z0-9\[\] ]/g,function(a){return Latinise.latin_map[a]||a});
+	return paramString;
+	
+}
+	
+function replaceCharacter(text){
+
+	text = text.replace("<",""); 
+	text = text.replace(">",""); 
+	text = text.replace("'",""); 
+	text = text.replace("\"","");
+	return text;
+		
+}
+// ham kiem tra so CMND Ho chieu chi cho nhap chu va so										
+function isCMND(checkstring) {	
+	var regexDigit =  "^[a-zA-Z0-9]+$";// "(0\\d{9,10})$";
+	var isValid = checkstring.match(regexDigit);
+	if (isValid)
+		return true;	
+	return false;
+
+}													
+//ham kiem tra ho ten chi cho nhap chu va ky tu khoang trang									
+function isFullname(checkstring) {	
+	var regexDigit =  "^[a-zA-Z ]+$";// "(0\\d{9,10})$";
+	var isValid = checkstring.match(regexDigit);
+	if (isValid)
+		return true;	
+	return false;
+
+}	
+//ham show countdown cho file otp.gs và newotp.gs
+function displayCountdown(){
+
+	$('#defaultCountdown').countdown(
+	{
+		until: +timeSendOTP,
+		format: 'MS',
+		onTick: function(periods) {
+			var secs = $.countdown.periodsToSeconds(periods);
+			timeSendOTP = secs;
+			if (secs == 0) { 
+				$('#btn_resendOtp').removeAttr("disabled");
+			}
+		}			
+	});	
+	//$('#btn_resendOtp').attr("disabled","disabled");
+	
+}
+// ham reset countdown tinh lai tu dau
+
+function resetCountdown(){
+	$('#defaultCountdown').countdown('option', {until: +300});
+	$('#btn_resendOtp').attr("disabled","disabled");
+	$('#btn_otp').removeAttr("disabled");
+	$('#submit_otp').removeAttr("disabled");
+	
+	
+}
+
+/*$("#naptientannoi").click(function() {
+ alert( "Handler for .click() called." );
+ });*/
+
+/* Hàm dùng ajax lấy html từ 1 URL vào 1 div */
+function getHTMLContentInDiv(url , selector){
+	//url là link cần lấy html
+	// selector: '#content' or '.content '
+	$.ajax({
+		url : url,
+		dataType : 'html',
+		beforeSend : function() {
+		},
+		success : function(data) {
+			$(selector).html(data);
+		},
+		error : function(request, status, error) {
+		},
+		complete : function() {
+		},
+		
+	});
+	
+}
+
+//function convert string format (12,000,000) to interger (currency)
+function convertStringCurrency2Int(value){
+	if(value == null || value == ""){
+		return 0;
+	}else{
+		return parseInt(value.replace(/\,/g,''));
+	}
+	
+}
+// check validate phone 
+function validatePhoneLogin(obj){
+	
+	if (!isPhoneNumber(obj.value)){ 
+		//obj.value= ''; 
+		obj.focus(); 
+		$("#grailsmessage").hide();
+		$('#errorMessage').html('Số điện thoại không hợp lệ');
+	}
+}
+// ham lay gia tri cua 1 bien tren URL theo name
+function GetURLParameter(sParam)
+{
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++) 
+    {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) 
+        {
+            return sParameterName[1];
+        }
+    }
+}
+function showWaitting(){
+	$('.waitting').show();
+	$('.loadingimage').css('top', ($(window).height()/2)-50+"px");
+	$('.loadingimage').css('left', ($(window).width()/2)-50 +"px");
+}
+
+function hideWaitting(){
+	
+	$('.waitting').hide();
+}
