@@ -1,0 +1,77 @@
+* {
+    position: relative
+}
+
+.timeline {
+    text-align: center;
+    padding: 20px 0;
+    width: 90%;
+    margin: auto;
+    counter-reset: my-badass-counter;
+    list-style: none
+}
+
+.timeline:before {
+    content: "";
+    position: absolute;
+    top: 90px;
+    left: 26px;
+    width: 1px;
+    height: calc(100% - 281px);
+    background: gray
+}
+
+.timeline .column {
+    margin: 40px 40px 40px 80px;
+    width: 70%;
+    text-align: left
+}
+
+.timeline .column .title h4:before {
+    content: counter(my-badass-counter);
+    counter-increment: my-badass-counter;
+    text-align: center;
+    position: absolute;
+    left: -70px;
+    background: #fff;
+    color: #af2070;
+    border: 2px solid #af2070;
+    width: 36px;
+    right: -34px;
+    bottom: -18px;
+    height: 36px;
+    -webkit-border-radius: 17px;
+    -moz-border-radius: 17px;
+    border-radius: 20px;
+    line-height: 2;
+    font-weight: 700
+}
+
+.timeline .column .description p {
+    font-size: 13px;
+    line-height: 20px;
+    margin-top: 10px;
+    font-family: Open Sans, serif
+}
+
+.border {
+    border-bottom: 2px solid #000;
+    width: 50%;
+    float: right;
+    margin: 10px 140px 0 10px;
+    position: relative
+}
+
+.border:after {
+    display: block;
+    content: '';
+    border: 2px solid #000;
+    position: absolute;
+    width: 32px;
+    right: -34px;
+    bottom: -18px;
+    height: 32px;
+    -webkit-border-radius: 17px;
+    -moz-border-radius: 17px;
+    border-radius: 200px
+}

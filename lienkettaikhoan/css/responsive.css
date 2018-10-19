@@ -1,0 +1,547 @@
+@media (min-width:0px) and (max-width:320px) {
+    ul>li {
+        font-size: 14px
+    }
+    .slider {
+        max-width: 81%;
+        margin: auto
+    }
+    footer img {
+        width: 35px;
+        height: 35px
+    }
+    .services {
+        min-height: 337px
+    }
+    .slick-prev {
+        float: left;
+        margin: 64% auto auto -9%
+    }
+    .slick-next {
+        float: right;
+        margin: -74% -10% auto auto
+    }
+    .slick-arrow {
+        width: 20px;
+        height: 40px
+    }
+    .timeline:before {
+        content: "";
+        position: absolute;
+        top: 28px;
+        left: 8px;
+        width: 1px;
+        height: calc(100% - 165px);
+        background: gray
+    }
+    .timeline .column {
+        margin: 5px 20px 5px 63px;
+        width: 80%;
+        text-align: left
+    }
+    h4 {
+        font-size: 16px
+    }
+    h3 {
+        font-size: 18px
+    }
+    #scroll-top {
+        position: absolute;
+        height: 32px;
+        width: 32px;
+        left: 87%;
+        top: 93.7%
+    }
+    .mobile-guide {
+        display: block
+    }
+    .desktop-guide {
+        display: none
+    }
+    p {
+        font-size: 14px!important
+    }
+    #btn-type-share,
+    #btn-type-shared {
+        height: 45px
+    }
+    .timeline {
+        padding: 10px 0
+    }
+    .text-content {
+        top: 11%
+    }
+    .bg-f5f5f5 {
+        margin-top: -60px
+    }
+    .bx-wrapper .bx-controls-direction a {
+        margin-top: -90%
+    }
+}
+
+@media (min-width:321px) and (max-width:375px) {
+    .banner {
+        height: 667px
+    }
+    #scroll-top,
+    footer img {
+        width: 45px;
+        height: 45px
+    }
+    ul>li {
+        font-size: 14px
+    }
+    #scroll-top {
+        position: absolute;
+        left: 87%;
+        top: 94.3%
+    }
+    .slider {
+        max-width: 82%;
+        margin: auto
+    }
+    .text-content {
+        top: 17%
+    }
+    h4 {
+        font-size: 16px
+    }
+    h3 {
+        font-size: 18px
+    }
+    .services {
+        min-height: 337px
+    }
+    .slick-prev {
+        float: left;
+        margin: 56% auto auto -9%
+    }
+    .slick-next {
+        float: right;
+        margin: -65% -10% auto auto
+    }
+    .slick-arrow {
+        width: 20px;
+        height: 40px
+    }
+    .timeline:before {
+        content: "";
+        position: absolute;
+        top: 32px;
+        left: 8px;
+        width: 1px;
+        height: calc(100% - 160px);
+        background: gray
+    }
+    .timeline .column {
+        margin: 5px 20px 5px 63px;
+        width: 80%;
+        text-align: left
+    }
+    .mobile-guide {
+        display: block
+    }
+    .desktop-guide {
+        display: none
+    }
+    p {
+        font-size: 14px!important
+    }
+    #btn-type-share,
+    #btn-type-shared {
+        height: 45px
+    }
+    .bg-f5f5f5 {
+        margin-top: -60px
+    }
+    .bx-wrapper .bx-controls-direction a {
+        margin-top: -90%
+    }
+}
+
+@media (min-width:376px) and (max-width:414px) {
+    #scroll-top,
+    footer img {
+        width: 45px;
+        height: 45px
+    }
+    .banner {
+        height: 737px
+    }
+    ul>li {
+        font-size: 14px
+    }
+    #scroll-top {
+        position: absolute;
+        left: 88%;
+        top: 94.4%
+    }
+    .slider {
+        max-width: 81%;
+        margin: auto
+    }
+    .text-content {
+        top: 30%
+    }
+    h4 {
+        font-size: 16px
+    }
+    h3 {
+        font-size: 18px
+    }
+    .services {
+        min-height: 350px
+    }
+    .slick-prev {
+        float: left;
+        margin: 49% auto auto -9%
+    }
+    .slick-next {
+        float: right;
+        margin: -61% -10% auto auto
+    }
+    .slick-arrow {
+        width: 25px;
+        height: 45px
+    }
+    .timeline:before {
+        content: "";
+        position: absolute;
+        top: 32px;
+        left: 10px;
+        width: 1px;
+        height: calc(100% - 160px);
+        background: gray
+    }
+    .timeline .column {
+        margin: 5px 20px 5px 63px;
+        width: 80%;
+        text-align: left
+    }
+    .mobile-guide {
+        display: block
+    }
+    .desktop-guide {
+        display: none
+    }
+    p {
+        font-size: 14px!important
+    }
+    #btn-type-share,
+    #btn-type-shared {
+        height: 45px
+    }
+    .bg-f5f5f5 {
+        margin-top: -60px
+    }
+    .bx-wrapper .bx-controls-direction a {
+        margin-top: -90%
+    }
+}
+
+@media(min-width:415px) and (max-width:768px) {
+    .slider {
+        max-width: 82%;
+        margin: auto
+    }
+    .text-content {
+        top: 41%
+    }
+    h4 {
+        font-size: 16px
+    }
+    h3 {
+        font-size: 18px
+    }
+    .services {
+        min-height: 337px
+    }
+    .slick-next {
+        float: right;
+        margin: -46% -10% auto auto
+    }
+    .slick-prev {
+        float: left;
+        margin: 38% auto auto -9%
+    }
+    .slick-arrow {
+        width: 30px;
+        height: 50px
+    }
+    .timeline:before {
+        content: "";
+        position: absolute;
+        top: 32px;
+        left: 8px;
+        width: 1px;
+        height: calc(100% - 120px);
+        background: gray
+    }
+    .timeline .column {
+        margin: 5px 20px 5px 63px;
+        width: 80%;
+        text-align: left
+    }
+    .banner {
+        background: url(../images/banner-3.jpeg) top center no-repeat;
+        background-size: cover;
+        min-height: 431px
+    }
+    .mobile-guide {
+        display: none
+    }
+    .desktop-guide {
+        display: block
+    }
+    .bg-f5f5f5 {
+        margin-top: -7.5%
+    }
+    .bx-wrapper .bx-controls-direction a {
+        margin-top: -90%
+    }
+}
+
+@media(min-width:769px) and (max-width:1024px) {
+    .inner-video {
+        display: block;
+        left: 24%;
+        position: absolute;
+        top: 11.7%;
+        width: 254px
+    }
+    .slick-next {
+        float: right;
+        margin: -30% -4% auto auto
+    }
+    .slick-prev {
+        float: left;
+        margin: 20% auto auto -4%
+    }
+    .timeline:before {
+        content: "";
+        position: absolute;
+        top: 78px;
+        left: 24px;
+        width: 1px;
+        height: calc(100% - 224px);
+        background: gray
+    }
+    .mobile-guide {
+        display: none
+    }
+    .desktop-guide {
+        display: block
+    }
+}
+
+@media (min-width:1025px) and (max-width:1280px) {
+    .slick-prev {
+        float: left;
+        margin: 14% auto auto -4%;
+        cursor: pointer
+    }
+    .slick-next {
+        float: right;
+        margin: -26.5% -4% auto auto;
+        cursor: pointer
+    }
+    #scroll-top {
+        position: absolute;
+        height: 50px;
+        width: 50px;
+        left: 92.5%;
+        top: 96.5%
+    }
+    .logo-momo {
+        width: 55px;
+        height: 55px
+    }
+    .navbar {
+        height: 60px;
+        font-size: 16px
+    }
+    .timeline:before {
+        height: calc(100% - 216px)
+    }
+    h3 {
+        font-size: 36px
+    }
+    .domain,
+    .phone {
+        display: inline-block
+    }
+    .text-content {
+        top: 35%
+    }
+    p {
+        font-size: 16px!important
+    }
+    .mobile-guide {
+        display: none
+    }
+    .desktop-guide {
+        display: block
+    }
+}
+
+@media (min-width:1281px) and (max-width:1366px) {
+    .slick-prev {
+        float: left;
+        margin: 14% auto auto -4%;
+        cursor: pointer
+    }
+    .slick-next {
+        float: right;
+        margin: -26.5% -4% auto auto;
+        cursor: pointer
+    }
+    #scroll-top {
+        position: absolute;
+        height: 50px;
+        width: 50px;
+        left: 89.5%;
+        top: 96.5%
+    }
+    .logo-momo {
+        width: 55px;
+        height: 55px
+    }
+    .navbar {
+        height: 60px;
+        font-size: 16px
+    }
+    .timeline:before {
+        height: calc(100% - 216px)
+    }
+    h3 {
+        font-size: 36px
+    }
+    .text-content {
+        top: 33%
+    }
+    p {
+        font-size: 16px!important
+    }
+    .mobile-guide {
+        display: none
+    }
+    .desktop-guide {
+        display: block
+    }
+}
+
+@media (min-width:1367px) and (max-width:1980px) {
+    .slick-prev {
+        float: left;
+        margin: 14% auto auto -4%;
+        cursor: pointer
+    }
+    .slick-next {
+        float: right;
+        margin: -26.5% -4% auto auto;
+        cursor: pointer
+    }
+    #scroll-top {
+        position: absolute;
+        height: 50px;
+        width: 50px;
+        left: 78%;
+        top: 96.5%
+    }
+    .logo-momo {
+        width: 55px;
+        height: 55px
+    }
+    .navbar {
+        height: 60px;
+        font-size: 16px
+    }
+    .timeline:before {
+        height: calc(100% - 250px)
+    }
+    h3 {
+        font-size: 36px
+    }
+    .text-content {
+        top: 37%
+    }
+    p {
+        font-size: 16px!important
+    }
+    .mobile-guide {
+        display: none
+    }
+    .desktop-guide {
+        display: block
+    }
+    .bg-f5f5f5 {
+        background-color: #f5f5f5;
+        margin-top: -3.5%
+    }
+}
+
+@media (min-width:1981px) and (max-width:2555px) {
+    .logo-momo {
+        width: 55px;
+        height: 55px
+    }
+    .navbar {
+        height: 60px;
+        font-size: 16px
+    }
+    h3 {
+        font-size: 36px
+    }
+    .mobile-guide {
+        display: none
+    }
+    .desktop-guide {
+        display: block
+    }
+}
+
+@media screen and (max-width:480px) {
+    .cd-top {
+        width: 40px;
+        height: 40px
+    }
+}
+
+@media screen and (max-width:720px) {
+    #thanhtoanantoan {
+        width: 100%;
+    }
+    #thanhtoanantoan h1.heading,
+    #thanhtoanantoan h2.heading {
+        text-align: left;
+    }
+    h1.heading {
+        font-size: 28px;
+    }
+    #thanhtoanantoan h3 {
+        font-weight: bold;
+        font-style: normal;
+        font-size: 16px;
+        line-height: 24px;
+        color: #666666;
+        padding: 0px 0 25px 60px;
+        margin: 0;
+        text-align: left;
+    }
+    .btn-a a {
+        font-weight: bold;
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-width:721px) {
+    .btn-a a {
+        font-weight: bold;
+        font-size: 18px;
+    }
+    
+    .btn-momo {
+        width: 40%;
+        padding: 20px 10px 20px 10px;
+    }
+}
